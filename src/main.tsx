@@ -1,17 +1,23 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
 import {configureStore} from '@reduxjs/toolkit';
 import rootReducer from './reducers';
 import Home from '@/views/home/index';
+import {createRoot} from 'react-dom/client'
 
 const store = configureStore({
   reducer: rootReducer,
 });
 
-ReactDOM.render(
+console.log(process.env.BASE_URL);
+
+const root = document.getElementById('root');
+if (!root) {
+  throw new Error("No root element found");
+}
+
+createRoot(root).render(
     <Provider store={store}>
       <Home/>
     </Provider>,
-    document.getElementById('root'),
 );

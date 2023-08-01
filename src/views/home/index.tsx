@@ -6,7 +6,7 @@ interface HomeProps {
 const Home: React.FC<HomeProps> = () => {
   return (
       <div>
-        <h1>Welcome to Home</h1>
+        <h5>Welcome to Home</h5>
       </div>
   );
 };

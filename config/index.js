@@ -6,18 +6,20 @@ const test = require('./test.js');
 // 根据不同的环境变量，导出不同的配置
 function config(env) {
   switch (env) {
-    case 'dev':
+    case 'development':
       return dev;
-    case 'prod':
+    case 'production':
       return prod;
     case 'sit':
       return sit;
     case 'test':
       return test;
     default:
-      return dev;
+      return 'dev';
   }
 }
 
-console.log('process.env.NODE_ENV', process.env.NODE_ENV)
-module.exports = config(process.env.NODE_ENV);
+console.log('process.env.APP_ENV', process.env.APP_ENV)
+const CONFIG = config(process.env.APP_ENV);
+
+module.exports = CONFIG

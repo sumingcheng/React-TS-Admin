@@ -1,9 +1,11 @@
 module.exports = {
+  // webpack-dev-server 配置
   mode: 'production',
-  version: '6.0.0',
-  BASE_URL: 'https://www.baidu.com2', // 接口请求地址
-  tabTitle: 'React TS webpack', // 浏览器页签名称
-  menuTitle: 'React TS webpack', // 菜单名称
+  version: '2.0.0',
   startPort: 22222,
   https: false,
+  // 项目配置
+  BASE_URL: 'https://www.baidu.com', // 接口请求地址
+  tabTitle: 'prod', // 浏览器页签名称
+  menuTitle: 'prod', // 菜单名称
 }

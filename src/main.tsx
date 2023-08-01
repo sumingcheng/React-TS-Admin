@@ -3,6 +3,7 @@ import React, {StrictMode} from 'react';
 // import rootReducer from './reducers';
 import Home from '@/views/home/index';
 import {createRoot} from 'react-dom/client'
+import '@/assets/index.less';
 // const store = configureStore({
 //   reducer: rootReducer
 // });

@@ -1,15 +1,16 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const Dotenv = require('dotenv-webpack');
+const CONFIG = require('./config');
 
 module.exports = {
-  mode: 'development',
+  mode: CONFIG.mode,
   entry: './src/main.tsx',
   devServer: {
     static: path.join(__dirname, 'dist'), // 从哪个目录提供内容
     compress: true, // 是否启用 gzip 压缩
-    port: 11111, // 服务运行的端口
-    open: false, // 是否自动打开浏览器窗口
+    port: CONFIG.startPort, // 服务运行的端口
+    open: false, // 是否打开浏览器
+    https: CONFIG.https, // 是否启用 https
     hot: true, // 启用热模块替换（请注意，你可能还需要在你的项目中安装并配置 webpack.HotModuleReplacementPlugin）
   },
   output: {
@@ -19,9 +20,6 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: './public/index.html',
-    }),
-    new Dotenv({
-      path: `./config${process.env.NODE_ENV}.env.js`,
     }),
   ],
   module: {

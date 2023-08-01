@@ -5,11 +5,13 @@ import rootReducer from './reducers';
 import Home from '@/views/home/index';
 import {createRoot} from 'react-dom/client'
 
+import config from '../config/index';
+
 const store = configureStore({
   reducer: rootReducer,
 });
 
-console.log(process.env.BASE_URL);
+console.log(config)
 
 const root = document.getElementById('root');
 if (!root) {

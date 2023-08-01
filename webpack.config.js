@@ -39,7 +39,8 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './public/index.html'
+      template: 'public/index.html',  // 模板文件路径
+      filename: 'index.html'  // 输出文件名
     }),
     new CleanWebpackPlugin(),
     //  浏览器全局变量 使用 process.env.BASE_URL 获取

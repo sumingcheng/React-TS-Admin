@@ -8,7 +8,7 @@ const join = path.join;
 
 const output = createWriteStream(join(__dirname, '../dist/dist.zip'));
 const archive = archiver('zip', {
-  zlib: {level: 9} // Sets the compression level
+  zlib: {level: 9}
 });
 
 archive.directory('./dist/resource/', false);

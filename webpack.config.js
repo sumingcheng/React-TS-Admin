@@ -10,7 +10,7 @@ console.log(CONFIG)
 
 module.exports = {
   mode: CONFIG.mode,
-  // devtool: 'source-map',
+  devtool: CONFIG.devtool,
   devServer: {
     static: 'dist',
     compress: true, // 是否启用 gzip 压缩

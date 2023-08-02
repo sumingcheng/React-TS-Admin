@@ -4,7 +4,7 @@ import {Button} from 'antd';
 const Detail: React.FC = () => {
   return (
       <div>
-        <Button>Detail</Button>
+        <Button type="primary">Detail</Button>
       </div>
   );
 };

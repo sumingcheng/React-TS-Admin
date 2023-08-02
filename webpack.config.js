@@ -33,10 +33,10 @@ module.exports = {
     filename: 'main.js'
   },
   resolve: {
-    extensions: ['.ts', '.tsx', '.js', '.jsx'],
     alias: {
       '@': path.resolve(__dirname, './src/')
-    }
+    },
+    extensions: ['.ts', '.tsx', '.js', '.jsx']
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -70,6 +70,25 @@ module.exports = {
           {loader: "style-loader"},
           {loader: "css-loader"},
           {loader: "less-loader"}
+        ]
+      },
+      {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          'css-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              postcssOptions: {
+                ident: 'postcss',
+                plugins: [
+                  require('tailwindcss'),
+                  require('autoprefixer')
+                ]
+              }
+            }
+          }
         ]
       }
     ]

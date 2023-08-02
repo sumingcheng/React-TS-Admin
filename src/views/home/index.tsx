@@ -9,8 +9,9 @@ const Home: React.FC<HomeProps> = () => {
   return (
       <div>
         <h5 className="ss">
-          <Button>home</Button>
+          <Button type="primary">home</Button>
         </h5>
+        <h1 className="text-3xl font-bold underline bg-amber-500">tailwind</h1>
       </div>
   );
 };

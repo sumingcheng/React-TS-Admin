@@ -1,7 +1,8 @@
-import React, {FC} from 'react';
+import React, {FC, lazy} from 'react';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
-import Home from '@/views/home/index';
-import Detail from '@/views/detail/index';
+
+const Home = lazy(() => import('@/views/home/index'));
+const Detail = lazy(() => import('@/views/detail/index'));
 
 const App: FC = () => {
   return (

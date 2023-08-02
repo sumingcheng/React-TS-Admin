@@ -3,15 +3,17 @@
   "version": "1.0.0",
   "description": "React+webpack+ant design+axios+less",
   "main": "./src/main.tsx",
+  "sideEffects": false,
   "scripts": {
     "dev": "cross-env APP_ENV=development webpack serve",
     "prod": "cross-env APP_ENV=production webpack serve",
     "test": "cross-env APP_ENV=test webpack serve",
     "sit": "cross-env APP_ENV=sit webpack serve",
-    "build": "cross-env APP_ENV=development webpack",
-    "build-prod": "cross-env APP_ENV=production webpack",
-    "build-test": "cross-env APP_ENV=test webpack",
-    "build-sit": "cross-env APP_ENV=sit webpack"
+    "build": "npm run clean && cross-env APP_ENV=development webpack",
+    "build-prod": "npm run clean && cross-env APP_ENV=production  webpack",
+    "build-test": "npm run clean && cross-env APP_ENV=test webpack",
+    "build-sit": "npm run clean && cross-env APP_ENV=sit webpack",
+    "clean": "bash ./bin/build.sh"
   },
   "husky": {
     "hooks": {
@@ -25,9 +27,9 @@
     "@reduxjs/toolkit": "^1.9.5",
     "antd": "^5.7.3",
     "axios": "^1.4.0",
-    "clean-webpack-plugin": "^4.0.0",
     "cross-env": "^7.0.3",
     "dayjs": "^1.11.9",
+    "mini-css-extract-plugin": "^2.7.6",
     "postcss-loader": "^7.3.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -56,6 +58,7 @@
     "ts-loader": "^9.4.4",
     "typescript": "^5.1.6",
     "webpack": "^5.88.2",
+    "webpack-bundle-analyzer": "^4.9.0",
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^4.13.3"
   }

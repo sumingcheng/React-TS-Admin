@@ -7,7 +7,7 @@ import App from '@/router/index';
 //   reducer: rootReducer
 // });
 import '@/assets/tailwind.css';
-import '@/assets/reSet.less';
+import '@/assets/normalize.less';
 
 const Root = () => {
   return (

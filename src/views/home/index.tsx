@@ -4,11 +4,9 @@ import {Button} from 'antd';
 import {useSelector, useDispatch} from "react-redux";
 import {toggleTheme} from "@/store/themeSlice";
 
-interface HomeProps {
-}
 
-const Home: React.FC<HomeProps> = () => {
-  const theme = useSelector((state: any) => state.theme);
+const Home: React.FC = () => {
+  const theme = useSelector((state: RootStateType) => state.theme);
   const dispatch = useDispatch();
 
   return (

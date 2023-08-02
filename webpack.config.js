@@ -67,7 +67,7 @@ module.exports = {
     new BundleAnalyzerPlugin({
       openAnalyzer: false,
       analyzerMode: 'static',
-      reportFilename: 'Analyzer.html'
+      reportFilename: '../Analyzer.html'
     }),
     new HtmlWebpackPlugin({
       template: 'public/index.html',  // 模板文件路径

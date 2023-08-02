@@ -1,9 +1,10 @@
 import React from 'react';
+import {Button} from 'antd';
 
 const Detail: React.FC = () => {
   return (
       <div>
-        <h5>Detail</h5>
+        <Button>Detail</Button>
       </div>
   );
 };

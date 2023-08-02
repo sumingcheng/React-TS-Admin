@@ -2,7 +2,7 @@ module.exports = {
   // webpack-dev-server 配置
   mode: 'development',
   version: '2.0.0',
-  startPort: 22222,
+  port: 22222,
   https: false,
   devtool: 'eval-source-map',
   // 项目配置

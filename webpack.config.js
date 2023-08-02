@@ -17,7 +17,7 @@ module.exports = {
     open: false, // 是否打开浏览器
     hot: true, // 启用热模块替换
     historyApiFallback: true,
-    port: CONFIG.startPort, // 服务运行的端口
+    port: CONFIG.port, // 服务运行的端口
     https: CONFIG.https, // 是否启用 https
     // proxy: {
     //   '/api': {
@@ -35,6 +35,11 @@ module.exports = {
       chunks: 'all',
       automaticNameDelimiter: '~',
       cacheGroups: {
+        reactDom: {
+          test: /[\\/]node_modules[\\/]react-dom[\\/]/,
+          name: 'react-dom',
+          chunks: 'all'
+        },
         vendor: {
           test: /[\\/]node_modules[\\/]/,
           name(module) {

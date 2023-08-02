@@ -5,6 +5,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const CONFIG = require('./config');
 const webpack = require('webpack');
+
 console.log(CONFIG)
 
 module.exports = {

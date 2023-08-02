@@ -1,9 +1,9 @@
 import React, {StrictMode} from 'react';
 // import {configureStore} from '@reduxjs/toolkit';
 // import rootReducer from './reducers';
-import Home from '@/views/home/index';
 import {createRoot} from 'react-dom/client'
 import '@/assets/index.less';
+import App from '@/router/index';
 // const store = configureStore({
 //   reducer: rootReducer
 // });
@@ -11,7 +11,7 @@ import '@/assets/index.less';
 const Root = () => {
   return (
       <StrictMode>
-        <Home/>
+        <App/>
       </StrictMode>
   );
 };

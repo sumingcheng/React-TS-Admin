@@ -12,10 +12,11 @@ module.exports = {
   devServer: {
     static: 'dist',
     compress: true, // 是否启用 gzip 压缩
-    port: CONFIG.startPort, // 服务运行的端口
     open: false, // 是否打开浏览器
-    https: CONFIG.https, // 是否启用 https
     hot: true, // 启用热模块替换
+    historyApiFallback: true,
+    port: CONFIG.startPort, // 服务运行的端口
+    https: CONFIG.https, // 是否启用 https
     // proxy: {
     //   '/api': {
     //     target:  CONFIG.BASE_URL, // 直接指向你请求的服务器地址

@@ -8,7 +8,7 @@ const Plugins = (CONFIG) => {
   return [
     //  浏览器全局变量 使用 process.env.BASE_URL 获取
     new webpack.EnvironmentPlugin({
-      NODE_ENV: CONFIG.mode, // use 'development' unless process.env.NODE_ENV is defined
+      NODE_ENV: CONFIG.mode,
       BASE_URL: CONFIG.BASE_URL, // 接口请求地址
       tabTitle: CONFIG.tabTitle, // 浏览器页签名称
       menuTitle: CONFIG.menuTitle // 菜单名称

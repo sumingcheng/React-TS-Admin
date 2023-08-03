@@ -2,6 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const {BundleAnalyzerPlugin} = require('webpack-bundle-analyzer');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 
 const CONFIG = require('./config');
 const webpack = require('webpack');
@@ -35,11 +36,13 @@ module.exports = {
       chunks: 'all',
       automaticNameDelimiter: '~',
       cacheGroups: {
-        reactDom: {
-          test: /[\\/]node_modules[\\/]react-dom[\\/]/,
-          name: 'react-dom',
-          chunks: 'all'
-        },
+        // reactDom: {
+        //   test: /[\\/]node_modules[\\/]react-dom[\\/]/,
+        //   name: 'react-dom',
+        //   chunks: 'all',
+        //   minSize: 2 * 1024, // 50KB
+        //   maxSize: 5 * 1024 // 100KB
+        // },
         vendor: {
           test: /[\\/]node_modules[\\/]/,
           name(module) {
@@ -74,9 +77,18 @@ module.exports = {
       analyzerMode: 'static',
       reportFilename: '../Analyzer.html'
     }),
+    new TerserPlugin({
+      extractComments: false
+    }),
     new HtmlWebpackPlugin({
       template: 'public/index.html',  // 模板文件路径
-      filename: 'index.html'  // 输出文件名
+      filename: 'index.html',  // 输出文件名
+      minify: {
+        collapseWhitespace: true, // 移除空格
+        removeComments: true, // 移除注释
+        removeRedundantAttributes: true // 移除冗余的属性
+        // 更多选项...
+      }
     }),
     new MiniCssExtractPlugin({
       filename: 'css/[name].[contenthash].css'

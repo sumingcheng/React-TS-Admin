@@ -46,11 +46,11 @@ module.exports = {
     type: 'filesystem'
   },
   // 插件
-  plugins: Plugins(CONFIG),
+  plugins: Plugins(CONFIG) || [],
   // 代码分割
-  optimization: Optimization(CONFIG),
+  optimization: Optimization(CONFIG) || {},
   // 模块化配置
-  module: Module(CONFIG)
+  module: Module(CONFIG) || {}
   // 输出构建信息
   // stats: {
   //   all: false,

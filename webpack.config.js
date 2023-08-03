@@ -3,12 +3,19 @@ const path = require('path');
 const Module = require('./webpack/module');
 const Plugins = require('./webpack/plugins');
 const CONFIG = require('./config');
-
+const Optimization = require('./webpack/optimization');
 console.log(CONFIG)
 
 module.exports = {
   mode: CONFIG.mode,
   devtool: CONFIG.devtool,
+  entry: './src/main.tsx',
+  output: {
+    clean: true,
+    path: path.resolve(__dirname, 'dist/resource'),
+    filename: 'js/[name].[contenthash].js',
+    chunkFilename: 'js/[id].[contenthash].js'
+  },
   devServer: {
     static: 'dist',
     compress: true, // 是否启用 gzip 压缩
@@ -27,37 +34,6 @@ module.exports = {
       overlay: true // 全屏覆盖
     }
   },
-  // 代码分割
-  optimization: {
-    splitChunks: {
-      chunks: 'all',
-      automaticNameDelimiter: '~',
-      cacheGroups: {
-        // reactDom: {
-        //   test: /[\\/]node_modules[\\/]react-dom[\\/]/,
-        //   name: 'react-dom',
-        //   chunks: 'all',
-        //   minSize: 2 * 1024, // 50KB
-        //   maxSize: 5 * 1024 // 100KB
-        // },
-        vendor: {
-          test: /[\\/]node_modules[\\/]/,
-          name(module) {
-            const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
-            // 去掉 @ 符号，因为 @ 符号不会被 webpack 识别
-            return `${packageName.replace('@', '')}`;
-          }
-        }
-      }
-    }
-  },
-  entry: './src/main.tsx',
-  output: {
-    clean: true,
-    path: path.resolve(__dirname, 'dist/resource'),
-    filename: 'js/[name].[contenthash].js',
-    chunkFilename: 'js/[id].[contenthash].js'
-  },
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src/')
@@ -66,9 +42,13 @@ module.exports = {
     modules: [path.resolve(__dirname, 'src'), 'node_modules'] // 缩小打包范围
   },
   cache: {
-    type: 'filesystem'
+    type: 'memory'
   },
+  // 插件
   plugins: Plugins,
+  // 代码分割
+  optimization: Optimization,
+  // 模块化配置
   module: Module
   // 输出构建信息
   // stats: {

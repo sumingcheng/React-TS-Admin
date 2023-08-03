@@ -4,6 +4,7 @@ const Module = require('./webpack/module');
 const Plugins = require('./webpack/plugins');
 const Optimization = require('./webpack/optimization');
 const Proxy = require('./webpack/proxy');
+const Stats = require('./webpack/stats')
 // 配置文件
 const CONFIG = require('./config');
 console.log(CONFIG.modeName)
@@ -46,15 +47,7 @@ module.exports = {
   // 代码分割
   optimization: Optimization(CONFIG) || {},
   // 模块化配置
-  module: Module(CONFIG) || {}
+  module: Module(CONFIG) || {},
   // 输出构建信息
-  // stats: {
-  //   all: false,
-  //   warnings: true,
-  //   errors: true,
-  //   errorDetails: true,
-  //   colors: true,
-  //   performance: true,
-  //   timings: true
-  // }
+  stats: Stats(CONFIG) || {}
 };

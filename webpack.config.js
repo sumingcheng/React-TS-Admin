@@ -2,8 +2,9 @@ const path = require('path');
 // 模块化配置
 const Module = require('./webpack/module');
 const Plugins = require('./webpack/plugins');
-const CONFIG = require('./config');
 const Optimization = require('./webpack/optimization');
+
+const CONFIG = require('./config');
 console.log(CONFIG)
 
 module.exports = {
@@ -45,11 +46,11 @@ module.exports = {
     type: 'memory'
   },
   // 插件
-  plugins: Plugins,
+  plugins: Plugins(CONFIG),
   // 代码分割
-  optimization: Optimization,
+  optimization: Optimization(CONFIG),
   // 模块化配置
-  module: Module
+  module: Module(CONFIG)
   // 输出构建信息
   // stats: {
   //   all: false,

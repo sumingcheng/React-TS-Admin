@@ -75,7 +75,7 @@ module.exports = {
     new BundleAnalyzerPlugin({
       openAnalyzer: false,
       analyzerMode: 'static',
-      reportFilename: '../Analyzer.html'
+      reportFilename: '../BundleAnalyzer.html'
     }),
     new TerserPlugin({
       extractComments: false

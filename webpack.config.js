@@ -5,12 +5,11 @@ const Plugins = require('./webpack/plugins');
 const Optimization = require('./webpack/optimization');
 // 配置文件
 const CONFIG = require('./config');
-const {mode, modeName, port, https, devtool} = require('./config');
-console.log(modeName)
+console.log(CONFIG.modeName)
 
 module.exports = {
-  mode: mode,
-  devtool: devtool,
+  mode: CONFIG.mode,
+  devtool: CONFIG.devtool,
   entry: './src/main.tsx',
   output: {
     clean: true,
@@ -24,8 +23,8 @@ module.exports = {
     open: false, // 是否打开浏览器
     hot: true, // 启用热模块替换
     historyApiFallback: true,
-    port: port, // 服务运行的端口
-    https: https, // 是否启用 https
+    port: CONFIG.port, // 服务运行的端口
+    https: CONFIG.https, // 是否启用 https
     // proxy: {
     //   '/api': {
     //     target:  CONFIG.BASE_URL, // 直接指向你请求的服务器地址
@@ -44,7 +43,7 @@ module.exports = {
     modules: [path.resolve(__dirname, 'src'), 'node_modules'] // 缩小打包范围
   },
   cache: {
-    type: 'memory'
+    type: 'filesystem'
   },
   // 插件
   plugins: Plugins(CONFIG),

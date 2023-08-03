@@ -14,7 +14,7 @@ const Plugins = (CONFIG) => {
     new TerserPlugin({
       extractComments: false
     }),
-    new HtmlWebpackPlugin({
+    CONFIG.mode === 'production' &&  new HtmlWebpackPlugin({
       template: 'public/index.html',  // 模板文件路径
       filename: 'index.html',  // 输出文件名
       minify: {

@@ -3,6 +3,7 @@ const path = require('path');
 const Module = require('./webpack/module');
 const Plugins = require('./webpack/plugins');
 const Optimization = require('./webpack/optimization');
+const Proxy = require('./webpack/proxy');
 // 配置文件
 const CONFIG = require('./config');
 console.log(CONFIG.modeName)
@@ -25,12 +26,7 @@ module.exports = {
     historyApiFallback: true,
     port: CONFIG.port, // 服务运行的端口
     https: CONFIG.https, // 是否启用 https
-    // proxy: {
-    //   '/api': {
-    //     target:  CONFIG.BASE_URL, // 直接指向你请求的服务器地址
-    //     changeOrigin: true
-    //   }
-    // },
+    proxy: Proxy(CONFIG) || {}, // 代理配置
     client: {
       overlay: true // 全屏覆盖
     }

@@ -17,10 +17,10 @@ archive.pipe(output);
 archive
     .finalize()
     .then(() => {
-      console.log('ZIP💼 file has been successfully created!');
+      console.log('ZIP 💼 file has been successfully created!');
     })
     .catch(err => {
-      console.error('An error occurred while creating the ZIP💼 file: ', err);
+      console.error('An error occurred while creating the ZIP 💼 file: ', err);
     });
 
 /*

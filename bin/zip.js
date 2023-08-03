@@ -5,7 +5,6 @@ const archiver = require('archiver');
 const createWriteStream = fs.createWriteStream;
 const join = path.join;
 
-
 const output = createWriteStream(join(__dirname, '../dist/dist.zip'));
 const archive = archiver('zip', {
   zlib: {level: 9}

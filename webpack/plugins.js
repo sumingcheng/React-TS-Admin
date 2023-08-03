@@ -1,6 +1,7 @@
 const TerserPlugin = require('terser-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const WebpackBar = require('webpackbar');
 const {BundleAnalyzerPlugin} = require('webpack-bundle-analyzer')
 const webpack = require('webpack');
 
@@ -11,7 +12,8 @@ const Plugins = (CONFIG) => {
       NODE_ENV: CONFIG.mode,
       BASE_URL: CONFIG.BASE_URL, // 接口请求地址
       tabTitle: CONFIG.tabTitle, // 浏览器页签名称
-      menuTitle: CONFIG.menuTitle // 菜单名称
+      menuTitle: CONFIG.menuTitle, // 菜单名称
+      packageName: CONFIG.packageName // 打包后的文件夹名称
     }),
     // 在生产打包的时候，启用 BundleAnalyzerPlugin 插件
     CONFIG.mode === 'production' && new BundleAnalyzerPlugin({
@@ -36,7 +38,9 @@ const Plugins = (CONFIG) => {
     // 提取css
     new MiniCssExtractPlugin({
       filename: 'css/[name].[contenthash].css'
-    })
+    }),
+    // 进度条
+    new WebpackBar()
   ]
 }
 module.exports = Plugins

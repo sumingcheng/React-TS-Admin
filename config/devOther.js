@@ -10,4 +10,5 @@ module.exports = {
   BASE_URL: 'https://www.baidu.com', // 接口请求地址
   tabTitle: 'ReactAntWorks', // 浏览器页签名称
   menuTitle: 'ReactAntWorks', // 菜单名称
+  packageName: 'ReactAntWorks-devOther' // 打包后的文件夹名称
 }

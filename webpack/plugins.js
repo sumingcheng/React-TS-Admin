@@ -3,9 +3,11 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const WebpackBar = require('webpackbar')
 const {BundleAnalyzerPlugin} = require('webpack-bundle-analyzer')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 const webpack = require('webpack')
 const CONFIG = require('../bin/config')
 const isProduction = CONFIG.mode === 'production'
+
 
 const Plugins = (CONFIG) => {
   return [
@@ -42,7 +44,16 @@ const Plugins = (CONFIG) => {
       filename: 'css/[name].[contenthash].css'
     }),
     // 进度条
-    isProduction && new WebpackBar()
+    isProduction && new WebpackBar(),
+    new CopyWebpackPlugin({
+      patterns: [{
+        from: 'public',
+        to: '',
+        globOptions: {
+          ignore: ['**/index.html']
+        }
+      }]
+    })
   ]
 }
 module.exports = Plugins

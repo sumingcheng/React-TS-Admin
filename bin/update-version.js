@@ -42,7 +42,7 @@ function updateVersion(newVersion) {
 
   const now = dayjs().format('YYYY年M月D日 H:mm:ss');
   const versionHistory = JSON.parse(fs.readFileSync(versionHistoryPath, 'utf8'));
-  versionHistory.push({version: newVersion, date: now});
+  versionHistory.unshift({version: newVersion, date: now});
   fs.writeFileSync(versionHistoryPath, JSON.stringify(versionHistory, null, 2));
 
   console.log(`🆕版本更新至 ${newVersion}!`);

@@ -46,13 +46,15 @@ const Plugins = (CONFIG) => {
     // 进度条
     isProduction && new WebpackBar(),
     new CopyWebpackPlugin({
-      patterns: [{
-        from: 'public',
-        to: '',
-        globOptions: {
-          ignore: ['**/index.html']
+      patterns: [
+        {
+          from: 'public',
+          to: '',
+          globOptions: {
+            ignore: ['**/index.html']
+          }
         }
-      }]
+      ]
     })
   ]
 }

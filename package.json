@@ -1,6 +1,6 @@
 {
   "name": "react-ts-admin",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "React+webpack+ant design+axios+less",
   "main": "./src/main.tsx",
   "scripts": {
@@ -9,6 +9,7 @@
     "build": "npm run clean && cross-env APP_ENV=prod webpack",
     "build-sit": "npm run clean && cross-env APP_ENV=sit webpack",
     "clean": "rimraf ./dist",
+    "update-version": "node ./bin/update-version.js",
     "postbuild": "node ./bin/zip.js"
   },
   "husky": {
@@ -26,15 +27,15 @@
     "axios": "^1.4.0",
     "cross-env": "^7.0.3",
     "dayjs": "^1.11.9",
-    "mini-css-extract-plugin": "^2.7.6",
+    "js-cookie": "^3.0.5",
+    "nanoid": "^4.0.2",
     "postcss-loader": "^7.3.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.1.2",
     "react-router-dom": "^6.14.2",
     "redux": "^4.2.1",
-    "rimraf": "^5.0.1",
-    "terser-webpack-plugin": "^5.3.9"
+    "rimraf": "^5.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.22.9",
@@ -51,9 +52,11 @@
     "husky": "^4.3.8",
     "less": "^4.1.3",
     "less-loader": "^11.1.3",
+    "mini-css-extract-plugin": "^2.7.6",
     "postcss": "^8.4.27",
     "style-loader": "^3.3.3",
     "tailwindcss": "^3.3.3",
+    "terser-webpack-plugin": "^5.3.9",
     "ts-loader": "^9.4.4",
     "typescript": "^5.1.6",
     "webpack": "^5.88.2",

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import '@/assets/home.less';
 import {Button} from 'antd';
 import {useSelector, useDispatch} from "react-redux";
@@ -10,19 +10,22 @@ const Home: React.FC = () => {
   const theme = useSelector((state: RootStateType) => state.theme);
   const dispatch = useDispatch();
 
+  const [state, setState] = useState({});
   const getTheme = () => {
     getData().then(res => {
       console.log(res)
+      setState(res)
     })
   }
 
   return (
       <div>
-        <h5 className="ss">
+        <h5>
           <Button onClick={() => dispatch(toggleTheme())}>切换主题</Button>
           <Button type={'primary'} onClick={() => getTheme()}>请求</Button>
+          <div>{JSON.stringify(state)}</div>
         </h5>
-        <h1 className="text-3xl font-bold underline bg-amber-500">{theme}</h1>
+        <h1>{theme}</h1>
       </div>
   );
 };

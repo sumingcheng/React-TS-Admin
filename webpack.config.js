@@ -6,7 +6,7 @@ const Optimization = require('./webpack/optimization');
 const Proxy = require('./webpack/proxy');
 const Stats = require('./webpack/stats')
 // 配置文件
-const CONFIG = require('./config');
+const CONFIG = require('./bin');
 console.log(CONFIG.modeName)
 
 module.exports = {

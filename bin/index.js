@@ -1,7 +1,7 @@
-const dev = require('./dev.js');
-const devOther = require('./devOther.js');
-const prod = require('./prod.js');
-const sit = require('./sit.js');
+const dev = require('../config/dev.js');
+const devOther = require('../config/devOther.js');
+const prod = require('../config/prod.js');
+const sit = require('../config/sit.js');
 
 const CONFIG = config(process.env.APP_ENV);
 

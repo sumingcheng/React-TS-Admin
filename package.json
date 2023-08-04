@@ -1,5 +1,5 @@
 {
-  "name": "reactantworks",
+  "name": "react-ts-admin",
   "version": "1.0.0",
   "description": "React+webpack+ant design+axios+less",
   "main": "./src/main.tsx",

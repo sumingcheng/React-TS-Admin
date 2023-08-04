@@ -1,11 +1,11 @@
-const TerserPlugin = require('terser-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const WebpackBar = require('webpackbar');
+const TerserPlugin = require('terser-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const WebpackBar = require('webpackbar')
 const {BundleAnalyzerPlugin} = require('webpack-bundle-analyzer')
-const webpack = require('webpack');
+const webpack = require('webpack')
 const CONFIG = require('../bin/config')
-const isProduction = CONFIG.mode === 'production';
+const isProduction = CONFIG.mode === 'production'
 
 const Plugins = (CONFIG) => {
   return [

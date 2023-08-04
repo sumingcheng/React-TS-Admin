@@ -1,11 +1,11 @@
-const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 
 const Optimization = (CONFIG) => {
   return {
     minimize: true,
     minimizer: [
       '...',
-      new CssMinimizerPlugin(),
+      new CssMinimizerPlugin()
     ],
     splitChunks: {
       chunks: 'all',
@@ -21,9 +21,9 @@ const Optimization = (CONFIG) => {
         vendor: {
           test: /[\\/]node_modules[\\/]/,
           name(module) {
-            const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
+            const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1]
             // 去掉 @ 符号，因为 @ 符号不会被 webpack 识别
-            return `${packageName.replace('@', '')}`;
+            return `${packageName.replace('@', '')}`
           }
         }
       }

@@ -1,6 +1,6 @@
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const CONFIG = require('../bin/config');
-const isProduction = CONFIG.mode === 'production';
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const CONFIG = require('../bin/config')
+const isProduction = CONFIG.mode === 'production'
 
 const Module = (CONFIG) => {
   return {

@@ -1,16 +1,16 @@
-import React, {useState} from 'react';
-import '@/assets/home.less';
-import {Button} from 'antd';
-import {useSelector, useDispatch} from "react-redux";
-import {toggleTheme} from "@/store/themeSlice";
-import {getData} from '@/api';
+import React, { useState } from 'react'
+import '@/assets/home.less'
+import { Button } from 'antd'
+import { useSelector, useDispatch } from "react-redux"
+import { toggleTheme } from "@/store/themeSlice"
+import { getData } from '@/api'
 
 
 const Home: React.FC = () => {
-  const theme = useSelector((state: RootStateType) => state.theme);
-  const dispatch = useDispatch();
+  const theme = useSelector((state: RootStateType) => state.theme)
+  const dispatch = useDispatch()
 
-  const [state, setState] = useState({});
+  const [state, setState] = useState({})
   const getTheme = () => {
     getData().then(res => {
       console.log(res)
@@ -27,7 +27,7 @@ const Home: React.FC = () => {
         </h5>
         <h1 className="text-3xl font-bold underline bg-sky-500">{theme}</h1>
       </div>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home

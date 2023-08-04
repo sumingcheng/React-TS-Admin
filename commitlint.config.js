@@ -15,10 +15,10 @@ module.exports = {
         'build', // 构建过程或辅助工具的变动
         'ci', // 改变持续集成的配置文件和 package 中的 scripts 命令
         'chore', // 其他改变（比如依赖更新）
-        'revert', // 代码回退
-      ],
+        'revert' // 代码回退
+      ]
     ],
     'subject-case': [2, 'never', ['upper-case']], // 提交信息的主题不能是大写
-    'header-max-length': [2, 'always', 999], // 提交信息的长度不能超过999个字符
-  },
+    'header-max-length': [2, 'always', 999] // 提交信息的长度不能超过999个字符
+  }
 }

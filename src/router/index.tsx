@@ -1,8 +1,8 @@
-import React, {FC, lazy} from 'react';
-import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import React, { FC, lazy } from 'react'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
-const Home = lazy(() => import('@/views/home/index'));
-const Detail = lazy(() => import('@/views/detail/index'));
+const Home = lazy(() => import('@/views/home/index'))
+const Detail = lazy(() => import('@/views/detail/index'))
 
 const App: FC = () => {
   return (
@@ -12,7 +12,7 @@ const App: FC = () => {
           <Route path="/detail" element={<Detail/>}/>
         </Routes>
       </Router>
-  );
+  )
 }
 
-export default App;
+export default App

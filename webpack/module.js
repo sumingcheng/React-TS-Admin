@@ -1,4 +1,6 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CONFIG = require('../bin/config');
+const isProduction = CONFIG.mode === 'production';
 
 const Module = (CONFIG) => {
   return {
@@ -16,7 +18,7 @@ const Module = (CONFIG) => {
       {
         test: /\.less$/,
         use: [
-          CONFIG.mode === 'production' ? MiniCssExtractPlugin.loader : 'style-loader',
+          isProduction ? MiniCssExtractPlugin.loader : 'style-loader',
           'css-loader',
           'less-loader'
         ]
@@ -24,7 +26,7 @@ const Module = (CONFIG) => {
       {
         test: /\.css$/,
         use: [
-          'style-loader',
+          isProduction ? MiniCssExtractPlugin.loader : 'style-loader',
           'css-loader',
           {
             loader: 'postcss-loader',

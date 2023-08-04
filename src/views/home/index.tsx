@@ -8,7 +8,7 @@ import {toggleTheme} from "@/store/themeSlice";
 const Home: React.FC = () => {
   const theme = useSelector((state: RootStateType) => state.theme);
   const dispatch = useDispatch();
-
+  
   return (
       <div>
         <h5 className="ss">

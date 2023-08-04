@@ -29,7 +29,7 @@ module.exports = {
     https: CONFIG.https, // 是否启用 https
     proxy: Proxy(CONFIG) || {}, // 代理配置
     client: {
-      overlay: true // 全屏覆盖
+      overlay: false // 全屏覆盖
     }
   },
   resolve: {

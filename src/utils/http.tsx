@@ -7,7 +7,7 @@ const AxiosInstances = axios.create({
   headers: {
     'Content-type': 'application/json; charset=UTF-8',
   },
-  baseURL: process.env.VUE_APP_BASE_API,
+  baseURL: process.env.BASE_URL,
   timeout: 10000,
   withCredentials: false, // 默认值
 });
@@ -35,11 +35,11 @@ AxiosInstances.interceptors.response.use(
       requestMap.delete(key);
 
       // 验证响应数据（假设响应是一个带有 'data' 属性的对象）
-      if (!res.data || typeof res.data !== 'object' || !res.data.data) {
+      if (!res.data) {
         return Promise.reject(new Error('无效的响应数据'));
       }
 
-      return res.data.data;
+      return res.data;
     },
     (error) => {
       const key = `${error.config.url}_${error.config.method}`;

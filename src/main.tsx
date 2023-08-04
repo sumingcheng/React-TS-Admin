@@ -6,6 +6,7 @@ import {createRoot} from 'react-dom/client'
 import App from '@/router/index';
 import '@/assets/tailwind.css';
 import '@/assets/normalize.less';
+import {getData} from '@/api';
 
 const store = configureStore({
   reducer: rootReducer,
@@ -24,3 +25,7 @@ const Root = () => {
 createRoot(document.getElementById('root')).render(<Root/>);
 // 动态设置标题
 document.getElementsByTagName('title')[0].innerHTML = process.env.tabTitle
+
+getData().then(res => {
+    console.log(res)
+})

@@ -40,7 +40,7 @@ const Plugins = (CONFIG) => {
       filename: 'css/[name].[contenthash].css'
     }),
     // 进度条
-    new WebpackBar()
+    CONFIG.mode === 'production' && new WebpackBar()
   ]
 }
 module.exports = Plugins

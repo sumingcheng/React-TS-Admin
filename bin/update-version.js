@@ -4,9 +4,9 @@ const path = require('path');
 const dayjs = require('dayjs');
 
 const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout
+  input: process.stdin, output: process.stdout
 });
+
 const packageJsonPath = path.resolve(__dirname, '../package.json');
 const versionHistoryPath = path.resolve(__dirname, './version-history.json');
 

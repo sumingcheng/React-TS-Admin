@@ -25,7 +25,7 @@ const Home: React.FC = () => {
           <Button type={'primary'} onClick={() => getTheme()}>请求</Button>
           <div>{JSON.stringify(state)}</div>
         </h5>
-        <h1>{theme}</h1>
+        <h1 className="text-3xl font-bold underline bg-amber-500">{theme}</h1>
       </div>
   );
 };

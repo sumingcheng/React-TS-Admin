@@ -10,3 +10,10 @@
 6. 集成了 Redux、Less、Ant Design、TailwindCSS、TypeScript，以及对 Axios 进行了二次封装
 7. 兼容主流的浏览器
 
+
+## 待办
+
+1. 搭建管理系统整体框架
+2. 自动路由
+3. 按照wetap的内容，按项完成
+

@@ -21,17 +21,23 @@
   margin: 10px;
   padding: 10px;
 
-  // 隐藏 Webkit 浏览器的滚动条 (Chrome, Safari)
+  // 为 Webkit 浏览器定制滚动条 (Chrome, Safari)
   &::-webkit-scrollbar {
-    width: 0;
-    background: transparent; // 使滚动条完全透明
+    width: 8px; // 设置滚动条宽度
+    background-color: rgba(0, 0, 0, 0); // 设置滚动条轨迹的背景颜色为透明
   }
 
-  // 隐藏 Firefox 的滚动条
-  scrollbar-width: none; // Firefox 64+
+  &::-webkit-scrollbar-thumb {
+    background-color: #d4d4d4; // 设置滚动条的颜色
+    border-radius: 10px; // 设置滚动条圆角
+    &:hover {
+      background-color: #c0c0c0; // 滚动条鼠标悬停时的颜色
+    }
+  }
 
-  // 隐藏 IE 和 Edge 的滚动条
-  -ms-overflow-style: none; // IE 11 and Edge
+  // Firefox 的滚动条定制
+  scrollbar-width: thin;
+  scrollbar-color: #d4d4d4 rgba(0, 0, 0, 0); // 分别是滚动条的颜色和滚动条轨迹的颜色
 }
 
 

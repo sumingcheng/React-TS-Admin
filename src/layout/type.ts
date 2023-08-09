@@ -16,4 +16,3 @@ export function getItem(
     label,
   } as MenuItem
 }
-

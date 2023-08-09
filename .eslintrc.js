@@ -45,6 +45,8 @@ module.exports = {
 
   // 自定义或覆盖默认规则
   rules: {
+    // 允许未使用的参数
+    '@typescript-eslint/no-unused-vars': 'off',
     // 禁用对函数组件定义方式的检查
     'react/function-component-definition': 'off',
     'react-hooks/rules-of-hooks': 'error',

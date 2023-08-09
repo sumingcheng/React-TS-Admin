@@ -23,6 +23,10 @@ const Home: React.FC = () => {
         <Button onClick={() => dispatch(toggleTheme())}>切换主题</Button>
         <Button type={'primary'} onClick={() => getTheme()}>请求</Button>
         <div>{JSON.stringify(state)}</div>
+        <div className={`h-96`}></div>
+        <div className={`h-96`}></div>
+        <div className={`h-96`}></div>
+        <div className={`h-96`}></div>
         <h1 className="text-3xl font-bold underline bg-sky-500">{theme}</h1>
       </div>
   )

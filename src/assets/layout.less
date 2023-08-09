@@ -16,9 +16,24 @@
 }
 
 .app-content {
-  margin: 16px;
-  padding: 16px;
+  overflow: auto;
+  height: calc(100vh - 132px);
+  margin: 10px;
+  padding: 10px;
+
+  // 隐藏 Webkit 浏览器的滚动条 (Chrome, Safari)
+  &::-webkit-scrollbar {
+    width: 0;
+    background: transparent; // 使滚动条完全透明
+  }
+
+  // 隐藏 Firefox 的滚动条
+  scrollbar-width: none; // Firefox 64+
+
+  // 隐藏 IE 和 Edge 的滚动条
+  -ms-overflow-style: none; // IE 11 and Edge
 }
+
 
 .sidebar-menu {
   .ant-layout-sider-trigger {

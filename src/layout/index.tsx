@@ -15,17 +15,17 @@ const App: React.FC = () => {
   return (
       <>
         <LayoutHeader/>
-        <Layout style={{minHeight: '100vh'}}>
+        <Layout>
           <Sidebar collapsed={collapsed} onCollapse={setCollapsed}/>
-          <Layout>
+          <Layout className={`overflow-y-auto`}>
             <Header className="breadcrumbs-header">
               <BreadCrumbs/>
             </Header>
-            <Watermark content="素明诚">
-              <Content className="app-content" style={{background: colorBgContainer}}>
+            <Content className="app-content" style={{background: colorBgContainer}}>
+              <Watermark content="素明诚">
                 <Outlet/>
-              </Content>
-            </Watermark>
+              </Watermark>
+            </Content>
           </Layout>
         </Layout>
       </>

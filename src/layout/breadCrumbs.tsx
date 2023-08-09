@@ -3,6 +3,7 @@ import {Breadcrumb} from 'antd'
 
 const App: React.FC = () => (
     <Breadcrumb
+        className={`text-sm`}
         separator=">"
         items={[
           {

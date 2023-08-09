@@ -33,11 +33,11 @@ const App: React.FC = () => {
         </Header>
         <Layout style={{minHeight: '100vh'}}>
           <Sider className={`menu`} breakpoint="lg" collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
-            <div className="h-16 text-white bg-black">4484915615646</div>
+            <div className="h-12 text-xl text-white bg-#002140 flex justify-center items-center">React-TS-Admin</div>
             <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" items={items}/>
           </Sider>
           <Layout>
-            <Header className={`px-4 py-0 bg-white flex items-center`}>
+            <Header className={`h-12 px-4 py-0 bg-white flex items-center`}>
               <BreadCrumbs/>
             </Header>
             <Watermark content="素明诚">

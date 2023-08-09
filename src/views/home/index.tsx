@@ -1,8 +1,8 @@
 import React, {useState} from 'react'
 import '@/assets/home.less'
 import {Button} from 'antd'
-import {useSelector, useDispatch} from "react-redux"
-import {toggleTheme} from "@/store/themeSlice"
+import {useSelector, useDispatch} from 'react-redux'
+import {toggleTheme} from '@/store/themeSlice'
 import {getData} from '@/api'
 
 

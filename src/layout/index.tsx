@@ -3,6 +3,7 @@ import {UserOutlined, PieChartOutlined, DesktopOutlined, TeamOutlined, FileOutli
 import {Layout, Menu, theme, Watermark} from 'antd'
 import {MenuItem, getItem} from '@/layout/type'
 import BreadCrumbs from '@/layout/breadCrumbs'
+import '@/assets/layout.less'
 
 const {Header, Content, Sider} = Layout
 
@@ -30,19 +31,18 @@ const App: React.FC = () => {
           <div>配置项</div>
         </Header>
         <Layout style={{minHeight: '100vh'}}>
-          <Sider breakpoint="lg" collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
-            <div className="h-16">4484915615646</div>
-            <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" items={items}/>
+          <Sider className={`menu`} breakpoint="lg" collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
+            <div className="h-16 text-white bg-black">4484915615646</div>
+            <Menu  theme="dark" defaultSelectedKeys={['1']} mode="inline" items={items}/>
           </Sider>
           <Layout>
-            <Header style={{padding: 0, background: colorBgContainer}}>
+            <Header className={`px-4 py-0 bg-white flex items-center`}>
               <BreadCrumbs/>
             </Header>
             <Watermark content="素明诚">
               <Content
+                  className={`m-4 p-4`}
                   style={{
-                    margin: '24px 16px',
-                    padding: 24,
                     minHeight: 280,
                     background: colorBgContainer,
                   }}

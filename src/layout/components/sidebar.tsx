@@ -24,7 +24,7 @@ const Sidebar: React.FC<{
   return (
       <Sider className="sidebar-menu" breakpoint="lg" collapsible collapsed={collapsed} onCollapse={onCollapse}>
         <div className="h-12 text-xl text-white bg-#002140 flex justify-center items-center">React-TS-Admin</div>
-        <Menu theme="light" defaultSelectedKeys={['1']} mode="inline" items={items}/>
+        <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" items={items}/>
       </Sider>
   )
 }

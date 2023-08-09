@@ -1,9 +1,9 @@
 import React, {useState} from 'react'
 import {Layout, Watermark, theme} from 'antd'
 import {Outlet} from 'react-router-dom'
-import BreadCrumbs from '@/layout/breadCrumbs'
-import Sidebar from '@/layout/sidebar'
-import LayoutHeader from '@/layout/header'
+import BreadCrumbs from '@/layout/components/breadCrumbs'
+import Sidebar from '@/layout/components/sidebar'
+import LayoutHeader from '@/layout/components/header'
 import '@/assets/layout.less'
 
 const {Header, Content} = Layout

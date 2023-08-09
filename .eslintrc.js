@@ -4,9 +4,9 @@ module.exports = {
 
   // 注册 @typescript-eslint 和 react 插件，使我们能使用与 TypeScript 和 React 相关的规则
   plugins: [
-    '@typescript-eslint',
     'react',
-    'react-hooks'
+    'react-hooks',
+    '@typescript-eslint'
   ],
 
   extends: [
@@ -18,6 +18,11 @@ module.exports = {
     browser: true, // 浏览器环境（如 window、document 等）
     node: true, // Node.js 环境（如 require、process 等）
     es2020: true // 启用 ES6 语法
+  },
+
+  parserOptions: {
+    ecmaVersion: 2021, // 或更高版本
+    sourceType: 'module' // 这是关键，表示支持 ES6 的 import/export 语法
   },
 
   // 配置模块解析设置
@@ -46,26 +51,6 @@ module.exports = {
     'react-hooks/exhaustive-deps': 'warn',
     // 仅允许在 .jsx 和 .tsx 文件中使用 JSX 语法，并发出警告
     'react/jsx-filename-extension': [1, {extensions: ['.jsx', '.tsx']}],
-    // 确保导入的模块可以被正确解析，但对大小写不敏感
-    'import/no-unresolved': [2, {commonjs: true, amd: false}],
-    'import/named': 'error',
-    'import/default': 'error',
-    'import/newline-after-import': 'error',
-    'import/no-duplicates': 'error',
-    'import/order': [
-      'error',
-      {
-        'groups': [
-          ['builtin', 'external'],
-          'internal',
-          ['parent', 'sibling', 'index']
-        ],
-        'newlines-between': 'always',
-        'alphabetize': {
-          'order': 'asc',
-          'caseInsensitive': true
-        }
-      }
-    ]
+    '@typescript-eslint/no-var-requires': 'off'
   }
 }

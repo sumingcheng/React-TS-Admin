@@ -1,9 +1,10 @@
-import React, {StrictMode} from 'react'
 import {configureStore} from '@reduxjs/toolkit'
-import {Provider} from 'react-redux'
+import React, {StrictMode} from 'react'
 import {createRoot} from 'react-dom/client'
-import rootReducer from '@/store/rootReducer'
+import {Provider} from 'react-redux'
+
 import App from '@/router/index'
+import rootReducer from '@/store/rootReducer'
 import '@/assets/tailwind.css'
 import '@/assets/normalize.less'
 

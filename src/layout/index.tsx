@@ -48,7 +48,6 @@ const App: React.FC = () => {
                     background: colorBgContainer,
                   }}
               >
-                {/*渲染子路由内容*/}
                 <Outlet/>
               </Content>
             </Watermark>

@@ -6,8 +6,8 @@ import {Provider} from 'react-redux'
 import App from '@/router/index'
 import rootReducer from '@/store/rootReducer'
 import 'nprogress/nprogress.css'
-import '@/assets/tailwind.css'
-import '@/assets/normalize.less'
+import '@/assets/global/tailwind.css'
+import '@/assets/global/normalize.less'
 
 const store = configureStore({
   reducer: rootReducer,

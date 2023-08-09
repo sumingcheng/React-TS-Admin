@@ -11,9 +11,9 @@ const App: React.FC = () => {
   } = theme.useToken()
 
   return (
-      <Layout style={{ minHeight: '100vh' }}>
+      <Layout style={{minHeight: '100vh'}}>
         <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
-          <div className="demo-logo-vertical" />
+          <div className="demo-logo-vertical"/>
           <Menu
               theme="dark"
               mode="inline"
@@ -58,9 +58,7 @@ const App: React.FC = () => {
                 background: colorBgContainer,
               }}
           >
-            <Watermark content="素明诚">
-
-            </Watermark>
+            <Watermark content="素明诚"/>
           </Content>
         </Layout>
       </Layout>
@@ -68,5 +66,3 @@ const App: React.FC = () => {
 }
 
 export default App
-
-

@@ -1,9 +1,8 @@
-// sidebar.tsx
 import React from 'react'
 import {Menu} from 'antd'
-import {getItem, MenuItem} from '@/layout/type'
-import {PieChartOutlined, DesktopOutlined, UserOutlined, TeamOutlined, FileOutlined} from '@ant-design/icons'
+import {DesktopOutlined, FileOutlined, PieChartOutlined, TeamOutlined, UserOutlined} from '@ant-design/icons'
 import Sider from 'antd/es/layout/Sider'
+import {getItem, MenuItem} from '@/layout/type'
 
 const items: MenuItem[] = [
   getItem('Option 1', '1', <PieChartOutlined/>),

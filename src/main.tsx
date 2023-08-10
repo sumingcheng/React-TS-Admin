@@ -2,7 +2,6 @@ import {configureStore} from '@reduxjs/toolkit'
 import React, {StrictMode} from 'react'
 import {createRoot} from 'react-dom/client'
 import {Provider} from 'react-redux'
-
 import App from '@/router/index'
 import rootReducer from '@/store/rootReducer'
 import 'nprogress/nprogress.css'

@@ -11,11 +11,11 @@ const Home: React.FC = () => {
   const dispatch = useDispatch()
 
   const [state, setState] = useState({})
-  const getTheme = () => {
-    getData().then(res => {
-      console.log(res)
-      setState(res)
-    })
+  const getTheme = async () => {
+    const res = await getData()
+    console.log(res)
+    setState(res)
+    getData().then().catch()
   }
 
   return (

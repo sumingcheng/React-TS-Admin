@@ -1,5 +1,5 @@
-import {configureStore} from '@reduxjs/toolkit'
 import React, {StrictMode} from 'react'
+import {configureStore} from '@reduxjs/toolkit'
 import {createRoot} from 'react-dom/client'
 import {Provider} from 'react-redux'
 import App from '@/router/index'

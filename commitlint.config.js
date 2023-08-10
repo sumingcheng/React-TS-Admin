@@ -8,6 +8,8 @@ module.exports = {
         'feat', // 新功能
         'fix', // 修复问题
         'docs', // 文档改变
+        'add', // 增加某个模块
+        'eslint', // 修改eslint相关配置
         'style', // 样式（不影响代码运行的变动）
         'refactor', // 重构（即不是新增功能，也不是修改bug的代码变动）
         'perf', // 性能优化

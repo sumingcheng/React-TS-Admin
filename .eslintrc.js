@@ -44,6 +44,7 @@ module.exports = {
 
   // 使用 TypeScript、React Hooks 和 React 的推荐配置
   extends: [
+    'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:react-hooks/recommended',
     'plugin:react/recommended',
@@ -54,6 +55,7 @@ module.exports = {
 
   // 自定义规则
   rules: {
+    // typescript-eslint
     '@typescript-eslint/no-unused-vars': 'off',  // 允许未使用的变量
     '@typescript-eslint/no-var-requires': 'off',  // 允许使用 require
     // react

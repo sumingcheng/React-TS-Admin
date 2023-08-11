@@ -14,17 +14,23 @@ module.exports = {
     ecmaVersion: 2021,
     sourceType: 'module',
     // 允许解析 JSX
-    ecmaFeatures: {jsx: true}
+    ecmaFeatures: {
+      jsx: true
+    }
   },
 
   // 配置模块解析设置
   settings: {
     // 指定 TypeScript 解析器应解析哪些文件
-    'import/parsers': {'@typescript-eslint/parser': ['.ts', '.tsx']},
+    'import/parsers': {
+      '@typescript-eslint/parser': ['.ts', '.tsx']
+    },
     // 使用 TypeScript 解析器作为模块解析器
     'import/resolver': {
       // 始终尝试使用类型信息进行解析
-      'typescript': {'alwaysTryTypes': true}
+      'typescript': {
+        'alwaysTryTypes': true
+      }
     }
   },
 
@@ -59,9 +65,29 @@ module.exports = {
     // 类的成员之间始终有空行
     'lines-between-class-members': ['error', 'always'],
     // 当链式调用超过2次时，要求换行
-    'newline-per-chained-call': ['error', {'ignoreChainWithDepth': 2}],
-    // 当对象属性跨多行时，要求花括号内有换行
-    'object-curly-newline': ['error', {'multiline': true}],
+    'newline-per-chained-call': ['error', {
+      'ignoreChainWithDepth': 2
+    }],
+    // 对于对象字面量，当属性跨多行或对象至少有一个属性时，要求花括号内有换行。
+    // "consistent": true 确保开始和结束花括号要么都换行，要么都不换行。
+    'object-curly-newline': ['error', {
+      'ObjectExpression': {
+        'multiline': true,
+        'minProperties': 0,
+        'consistent': true
+      },
+      'ObjectPattern': {
+        'multiline': true,
+        'minProperties': 0,
+        'consistent': true
+      },
+      'ImportDeclaration': 'never',   // import 语句的花括号不换行
+      'ExportDeclaration': 'never'    // export 语句的花括号不换行
+    }],
+    // 要求 import 语句后有指定数量的空行，此配置要求有一个空行。
+    'import/newline-after-import': ['error', {
+      'count': 1
+    }],
     // 要求数组的开闭括号之间的换行与括号内的元素保持一致
     'array-bracket-newline': ['error', 'consistent'],
     // typescript-eslint
@@ -71,7 +97,10 @@ module.exports = {
     'react/function-component-definition': 'off',  // 不要求特定的函数组件定义方式
     'react-hooks/rules-of-hooks': 'error',  // 强制使用 React Hooks 规则
     'react-hooks/exhaustive-deps': 'warn',  // 警告缺失的依赖项
-    'react/jsx-filename-extension': [1, {extensions: ['.jsx', '.tsx']}],  // 仅在指定的文件扩展名中允许 JSX
+    'react/jsx-filename-extension': [1, {
+      extensions: ['.jsx', '.tsx']
+    }],
+    // 仅在指定的文件扩展名中允许 JSX
     // 配置导入顺序
     'import/order': [
       'error',

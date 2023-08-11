@@ -15,7 +15,8 @@ const Home: React.FC = () => {
     const res = await getData()
     console.log(res)
     setState(res)
-    getData().then().catch()
+    getData().then()
+        .catch()
   }
 
   return (

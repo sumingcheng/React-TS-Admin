@@ -9,7 +9,9 @@ interface RequestInfo {
 
 // 创建axios实例并设置默认配置
 const AxiosInstances: AxiosInstance = axios.create({
-  headers: {'Content-type': 'application/json; charset=UTF-8'},
+  headers: {
+    'Content-type': 'application/json; charset=UTF-8',
+  },
   baseURL: process.env.BASE_URL, // 基础URL
   timeout: 10 * 1000,                // 请求超时时间
   withCredentials: false,        // 是否携带凭证
@@ -46,7 +48,9 @@ AxiosInstances.interceptors.request.use(
 
       // 如果请求不存在于映射中
       if (!info) {
-        requestMap.set(key, {timestamp: now, count: 1})  // 初始请求次数设置为1
+        requestMap.set(key, {
+          timestamp: now, count: 1,
+        })  // 初始请求次数设置为1
 
         setTimeout(() => {
           requestMap.delete(key)

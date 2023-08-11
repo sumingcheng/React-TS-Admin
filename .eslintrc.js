@@ -9,31 +9,22 @@ module.exports = {
     es2020: true
   },
 
-  // 定义全局变量
-  globals: {
-    // APP_ENV: 'readonly'
-  },
-
   // 定义解析器选项
   parserOptions: {
     ecmaVersion: 2021,
     sourceType: 'module',
-    ecmaFeatures: {
-      jsx: true  // 允许解析 JSX
-    }
+    // 允许解析 JSX
+    ecmaFeatures: {jsx: true}
   },
 
   // 配置模块解析设置
   settings: {
     // 指定 TypeScript 解析器应解析哪些文件
-    'import/parsers': {
-      '@typescript-eslint/parser': ['.ts', '.tsx']
-    },
+    'import/parsers': {'@typescript-eslint/parser': ['.ts', '.tsx']},
     // 使用 TypeScript 解析器作为模块解析器
     'import/resolver': {
-      'typescript': {
-        'alwaysTryTypes': true  // 始终尝试使用类型信息进行解析
-      }
+      // 始终尝试使用类型信息进行解析
+      'typescript': {'alwaysTryTypes': true}
     }
   },
 
@@ -55,6 +46,24 @@ module.exports = {
 
   // 自定义规则
   rules: {
+    // 基础规则
+    'padding-line-between-statements': [
+      'error',
+      {
+        // 在函数或多行块语句之间始终添加空行
+        'blankLine': 'always',
+        'prev': ['function', 'multiline-block-like'],
+        'next': ['function', 'multiline-block-like']
+      }
+    ],
+    // 类的成员之间始终有空行
+    'lines-between-class-members': ['error', 'always'],
+    // 当链式调用超过2次时，要求换行
+    'newline-per-chained-call': ['error', {'ignoreChainWithDepth': 2}],
+    // 当对象属性跨多行时，要求花括号内有换行
+    'object-curly-newline': ['error', {'multiline': true}],
+    // 要求数组的开闭括号之间的换行与括号内的元素保持一致
+    'array-bracket-newline': ['error', 'consistent'],
     // typescript-eslint
     '@typescript-eslint/no-unused-vars': 'off',  // 允许未使用的变量
     '@typescript-eslint/no-var-requires': 'off',  // 允许使用 require

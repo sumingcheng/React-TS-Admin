@@ -9,6 +9,7 @@
 5. 优化了打包界面，减少无关的输出信息
 6. 集成了 Redux、Less、Ant Design、TailwindCSS、TypeScript，以及对 Axios 进行了二次封装
 7. 兼容主流的浏览器
+8. dev
 
 
 ## 待办

@@ -5,7 +5,6 @@ import {useSelector, useDispatch} from 'react-redux'
 import {toggleTheme} from '@/store/themeSlice'
 import {getData} from '@/api'
 
-
 const Home: React.FC = () => {
   const theme = useSelector((state: RootStateType) => state.theme)
   const dispatch = useDispatch()
@@ -15,8 +14,6 @@ const Home: React.FC = () => {
     const res = await getData()
     console.log(res)
     setState(res)
-    getData().then()
-        .catch()
   }
 
   return (

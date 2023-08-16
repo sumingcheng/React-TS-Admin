@@ -62,6 +62,7 @@ module.exports = {
         'next': ['function', 'multiline-block-like']
       }
     ],
+    "no-multiple-empty-lines": ["error", { "max": 2 }],
     // 类的成员之间始终有空行
     'lines-between-class-members': ['error', 'always'],
     // 当链式调用超过2次时，要求换行

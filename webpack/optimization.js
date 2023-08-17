@@ -1,12 +1,9 @@
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 
-const Optimization = (CONFIG) => {
+const Optimization = CONFIG => {
   return {
     minimize: true,
-    minimizer: [
-      '...',
-      new CssMinimizerPlugin()
-    ],
+    minimizer: ['...', new CssMinimizerPlugin()],
     splitChunks: {
       chunks: 'all',
       automaticNameDelimiter: '~',

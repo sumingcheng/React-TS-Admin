@@ -1,8 +1,9 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CONFIG = require('../bin/config')
+
 const isProduction = CONFIG.mode === 'production'
 
-const Module = (CONFIG) => {
+const Module = CONFIG => {
   return {
     rules: [
       {
@@ -33,10 +34,7 @@ const Module = (CONFIG) => {
             options: {
               postcssOptions: {
                 ident: 'postcss',
-                plugins: [
-                  require('tailwindcss'),
-                  require('autoprefixer')
-                ]
+                plugins: [require('tailwindcss'), require('autoprefixer')]
               }
             }
           }

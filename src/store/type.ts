@@ -1,4 +1,4 @@
 interface RootStateType {
-  theme: string;
+  theme: string
   // ... 其他 state 类型
 }

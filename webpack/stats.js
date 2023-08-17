@@ -1,4 +1,4 @@
-const Stats = (CONFIG) => {
+const Stats = CONFIG => {
   return {
     all: false, // 默认不显示所有的统计信息
     warnings: true, // 显示构建过程中的警告

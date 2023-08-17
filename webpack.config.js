@@ -1,12 +1,12 @@
-const path = require('path');
+const path = require('path')
 // 模块化配置
-const Module = require('./webpack/module');
-const Plugins = require('./webpack/plugins');
-const Optimization = require('./webpack/optimization');
-const Proxy = require('./webpack/proxy');
+const Module = require('./webpack/module')
+const Plugins = require('./webpack/plugins')
+const Optimization = require('./webpack/optimization')
+const Proxy = require('./webpack/proxy')
 const Stats = require('./webpack/stats')
 // 配置文件
-const CONFIG = require('./bin/config');
+const CONFIG = require('./bin/config')
 console.log(CONFIG.mode, CONFIG.modeName)
 
 module.exports = {
@@ -54,4 +54,4 @@ module.exports = {
   module: Module(CONFIG) || {},
   // 输出构建信息
   stats: Stats(CONFIG) || {}
-};
+}

@@ -1,5 +1,5 @@
-import React, {useEffect} from 'react'
-import {useLocation} from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
 
@@ -20,7 +20,6 @@ const NProgressHandler: React.FC = () => {
       // 确保进度条完成
       NProgress.done()
     }
-
   }, [location.pathname])
 
   return null

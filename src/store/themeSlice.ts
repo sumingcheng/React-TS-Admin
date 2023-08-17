@@ -1,5 +1,5 @@
 // "createSlice" 是一个函数，它接收一个配置对象，然后返回一个包含 reducer 和 action creators 的对象
-import {createSlice} from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit'
 
 // 使用 "createSlice" 函数创建一个名为 "theme" 的 slice
 // 这个 slice 包含一个 reducer 和一个名为 "toggleTheme" 的 action creator
@@ -14,15 +14,13 @@ const themeSlice = createSlice({
   // 在这个例子中，我们只有一个名为 "toggleTheme" 的 action creator，
   // 对应的 reducer 函数接收当前的 state（即当前的主题），然后返回新的 state（即新的主题）
   reducers: {
-    toggleTheme: (state) => (state === 'light' ? 'dark' : 'light'),
-  },
+    toggleTheme: state => (state === 'light' ? 'dark' : 'light')
+  }
 })
 
 // 从 "themeSlice" 中导出 "toggleTheme" action creator
 // 这样，我们就可以在其他文件中导入并使用它了
-export const {
-  toggleTheme,
-} = themeSlice.actions
+export const { toggleTheme } = themeSlice.actions
 
 // 导出 "themeSlice" 的 reducer
 // 这个 reducer 是用来处理和主题相关的 actions 的

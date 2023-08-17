@@ -8,7 +8,7 @@
     "dev:other": "cross-env APP_ENV=devOther webpack serve",
     "build": "sh ./bin/before.sh && cross-env APP_ENV=prod webpack",
     "build:sit": "sh ./bin/before.sh && cross-env APP_ENV=sit webpack",
-    "lint": "eslint ./src/ --ext .js,.jsx",
+    "lint": "eslint ./src/ --ext .ts,.tsx --fix",
     "postbuild": "node ./bin/zip.js"
   },
   "husky": {

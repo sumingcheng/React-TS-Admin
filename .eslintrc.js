@@ -21,6 +21,9 @@ module.exports = {
 
   // 配置模块解析设置
   settings: {
+    react: {
+      version: 'detect' // 使用 "detect" 可以自动检测 React 的版本
+    },
     // 指定 TypeScript 解析器应解析哪些文件
     'import/parsers': {
       '@typescript-eslint/parser': ['.ts', '.tsx']
@@ -64,6 +67,8 @@ module.exports = {
     'no-multiple-empty-lines': ['error', { max: 2 }],
     // 类的成员之间始终有空行
     'lines-between-class-members': ['error', 'always'],
+    // 允许then
+    'promise/no-promise-in-callback': 'off',
     // 当链式调用超过2次时，要求换行
     'newline-per-chained-call': [
       'error',

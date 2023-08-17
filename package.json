@@ -5,9 +5,9 @@
   "main": "./src/main.tsx",
   "scripts": {
     "dev": "cross-env APP_ENV=dev webpack serve",
-    "dev-other": "cross-env APP_ENV=devOther webpack serve",
+    "dev:other": "cross-env APP_ENV=devOther webpack serve",
     "build": "sh ./bin/before.sh && cross-env APP_ENV=prod webpack",
-    "build-sit": "sh ./bin/before.sh && cross-env APP_ENV=sit webpack",
+    "build:sit": "sh ./bin/before.sh && cross-env APP_ENV=sit webpack",
     "lint": "eslint ./src/ --ext .js,.jsx",
     "postbuild": "node ./bin/zip.js"
   },

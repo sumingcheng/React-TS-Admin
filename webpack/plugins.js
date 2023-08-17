@@ -1,10 +1,10 @@
+const webpack = require('webpack')
 const TerserPlugin = require('terser-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const WebpackBar = require('webpackbar')
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
-const webpack = require('webpack')
 const CONFIG = require('../bin/config')
 
 const isProduction = CONFIG.mode === 'production'
@@ -47,6 +47,7 @@ const Plugins = CONFIG => {
     }),
     // 进度条
     isProduction && new WebpackBar(),
+    // 拷贝静态资源
     new CopyWebpackPlugin({
       patterns: [
         {

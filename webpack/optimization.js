@@ -1,6 +1,6 @@
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 
-const Optimization = () => {
+const Optimization = CONFIG => {
   return {
     minimize: true,
     minimizer: ['...', new CssMinimizerPlugin()],

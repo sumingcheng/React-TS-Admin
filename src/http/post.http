@@ -1,0 +1,53 @@
+###
+
+### 列出所有帖子
+GET {{baseUrl}}/posts
+Accept: application/json
+
+###
+
+### 查看帖子详情
+GET {{baseUrl}}/posts/{{postId}}
+Accept: application/json
+
+###
+
+### 查看帖子详情，包括评论
+GET {{baseUrl}}/posts/{{postId}}/comments
+Accept: application/json
+
+###
+
+### 根据用户列出帖子
+GET {{baseUrl}}/posts?userId={{userId}}
+Accept: application/json
+
+###
+
+### 添加新帖子
+POST {{baseUrl}}/posts
+Accept: application/json
+Content-Type: application/json
+
+{
+  "title": "帖子标题",
+  "body": "帖子内容",
+  "userId": "{{userId}}"
+}
+
+###
+
+### 编辑帖子
+PUT {{baseUrl}}/posts/{{postId}}
+Accept: application/json
+Content-Type: application/json
+
+{
+  "title": "新的帖子标题"
+}
+
+###
+
+### 删除帖子
+DELETE {{baseUrl}}/posts/{{postId}}
+Accept: application/json

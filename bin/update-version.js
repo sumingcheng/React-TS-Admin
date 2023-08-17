@@ -57,7 +57,7 @@ rl.question('🔄是否自动更新版本号? (y/n) ', shouldIncrement => {
     const newVersion = incrementVersion(packageJson.version)
     updateVersion(newVersion)
   } else {
-    rl.question('🔢是否手动更新版本号? (y/n) ', shouldUpdate => {
+    rl.question('🖖是否手动更新版本号? (y/n) ', shouldUpdate => {
       if (shouldUpdate.toLowerCase() === 'y') {
         askVersion()
       } else {

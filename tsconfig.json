@@ -3,6 +3,7 @@
     "baseUrl": "./",
     "outDir": "./dist/",
     "sourceMap": true,
+    "types": ["node", "webpack-env"],
     "noImplicitAny": true,
     "module": "commonjs",
     "target": "es6",

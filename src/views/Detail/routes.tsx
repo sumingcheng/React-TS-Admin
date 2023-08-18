@@ -1,8 +1,8 @@
 import React, { FC, lazy } from 'react'
 import { Routes, Route } from 'react-router-dom'
 
-const Profile = lazy(() => import('./profile'))
-const Settings = lazy(() => import('./settings'))
+const Profile = lazy(() => import('./page/profile'))
+const Settings = lazy(() => import('./page/settings'))
 
 const Detail: FC = () => {
   return (

@@ -4,7 +4,7 @@ import NProgressHandler from '@/layout/components/nprogress'
 
 const Layout = lazy(() => import('@/layout/index'))
 const Home = lazy(() => import('@/views/Home/index'))
-const Detail = lazy(() => import('@/views/Detail/page/routes'))
+const Detail = lazy(() => import('@/views/Detail/routes'))
 
 const App: FC = () => {
   return (

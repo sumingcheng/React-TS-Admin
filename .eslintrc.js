@@ -53,8 +53,10 @@ module.exports = {
 
   // 自定义规则
   rules: {
+    'security/detect-non-literal-fs-filename': 'off',
     'prettier/prettier': 'error',
     // 基础规则
+    '@typescript-eslint/no-explicit-any': 'off', // 允许使用 any
     'padding-line-between-statements': [
       'error',
       {

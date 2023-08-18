@@ -5,13 +5,13 @@ module.exports = {
   // 定义代码运行的环境
   env: {
     browser: true,
-    node: true,
-    es2020: true
+    es6: true,
+    node: true
   },
 
   // 定义解析器选项
   parserOptions: {
-    ecmaVersion: 2021,
+    ecmaVersion: 2020,
     sourceType: 'module',
     // 允许解析 JSX
     ecmaFeatures: {
@@ -53,6 +53,7 @@ module.exports = {
 
   // 自定义规则
   rules: {
+    'max-len': ['error', { code: 100, ignoreUrls: true, ignoreStrings: true }],
     'security/detect-non-literal-fs-filename': 'off',
     'prettier/prettier': 'error',
     // 基础规则
@@ -106,7 +107,14 @@ module.exports = {
     'import/order': [
       'error',
       {
-        groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index'],
+        groups: [
+          'builtin',
+          'external',
+          'internal',
+          'parent',
+          'sibling',
+          'index'
+        ],
         'newlines-between': 'never',
         alphabetize: {
           order: 'ignore',

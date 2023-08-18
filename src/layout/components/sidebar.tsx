@@ -18,7 +18,10 @@ const items: MenuItem[] = [
     getItem('Bill', '4'),
     getItem('Alex', '5')
   ]),
-  getItem('Team', 'sub2', <TeamOutlined />, [getItem('Team 1', '6'), getItem('Team 2', '8')]),
+  getItem('Team', 'sub2', <TeamOutlined />, [
+    getItem('Team 1', '6'),
+    getItem('Team 2', '8')
+  ]),
   getItem('Files', '9', <FileOutlined />)
 ]
 
@@ -32,12 +35,16 @@ const Sidebar: React.FC<{
       breakpoint="lg"
       collapsible
       collapsed={collapsed}
-      onCollapse={onCollapse}
-    >
+      onCollapse={onCollapse}>
       <div className="h-12 text-xl text-white bg-#002140 flex justify-center items-center">
         React-TS-Admin
       </div>
-      <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" items={items} />
+      <Menu
+        theme="dark"
+        defaultSelectedKeys={['1']}
+        mode="inline"
+        items={items}
+      />
     </Sider>
   )
 }

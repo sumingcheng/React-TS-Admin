@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { Layout, Watermark, theme } from 'antd'
-import { Outlet } from 'react-router-dom'
 import BreadCrumbs from '@/layout/components/breadCrumbs'
 import Sidebar from '@/layout/components/sidebar'
 import LayoutHeader from '@/layout/components/header'
@@ -8,7 +7,11 @@ import '@/assets/layout.less'
 
 const { Header, Content } = Layout
 
-const App: React.FC = () => {
+interface Props {
+  children?: React.ReactNode
+}
+
+const App: React.FC<Props> = ({ children }) => {
   const [collapsed, setCollapsed] = useState(false)
   const {
     token: { colorBgContainer }
@@ -24,9 +27,7 @@ const App: React.FC = () => {
             <BreadCrumbs />
           </Header>
           <Content className="app-content" style={{ background: colorBgContainer }}>
-            <Watermark content="素明诚">
-              <Outlet />
-            </Watermark>
+            <Watermark content="素明诚">{children}</Watermark>
           </Content>
         </Layout>
       </Layout>

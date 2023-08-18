@@ -3,8 +3,12 @@ import { Routes, Route, BrowserRouter } from 'react-router-dom'
 import NProgressHandler from '@/layout/components/nprogress'
 
 const Layout = lazy(() => import('@/layout/index'))
-const Home = lazy(() => import(/* webpackPrefetch: true */ '@/views/Home/index'))
-const Detail = lazy(() => import(/* webpackPrefetch: true */ '@/views/Detail/routes'))
+const Home = lazy(
+  () => import(/* webpackPrefetch: true */ '@/views/Home/index')
+)
+const Detail = lazy(
+  () => import(/* webpackPrefetch: true */ '@/views/Detail/routes')
+)
 
 const App: FC = () => {
   return (

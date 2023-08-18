@@ -1,5 +1,5 @@
 import React from 'react'
-import { Menu } from 'antd'
+import { Menu, MenuProps } from 'antd'
 import {
   DesktopOutlined,
   FileOutlined,
@@ -7,12 +7,13 @@ import {
   TeamOutlined,
   UserOutlined
 } from '@ant-design/icons'
-import Sider from 'antd/es/layout/Sider'
+import Slider from 'antd/es/layout/Sider'
+import { useNavigate } from 'react-router-dom'
 import { getItem, MenuItem } from '@/layout/type'
 
 const items: MenuItem[] = [
-  getItem('Option 1', '1', <PieChartOutlined />),
-  getItem('Option 2', '2', <DesktopOutlined />),
+  getItem('首页', '/', <PieChartOutlined />),
+  getItem('detail', '/detail', <DesktopOutlined />),
   getItem('User', 'sub1', <UserOutlined />, [
     getItem('Tom', '3'),
     getItem('Bill', '4'),
@@ -29,8 +30,14 @@ const Sidebar: React.FC<{
   collapsed: boolean
   onCollapse: (value: boolean) => void
 }> = ({ collapsed, onCollapse }) => {
+  const navigate = useNavigate()
+  const onClick: MenuProps['onClick'] = e => {
+    console.log(e.key)
+    navigate(e.key)
+  }
+
   return (
-    <Sider
+    <Slider
       className="sidebar-menu"
       breakpoint="lg"
       collapsible
@@ -40,12 +47,13 @@ const Sidebar: React.FC<{
         React-TS-Admin
       </div>
       <Menu
+        onClick={onClick}
         theme="dark"
         defaultSelectedKeys={['1']}
         mode="inline"
         items={items}
       />
-    </Sider>
+    </Slider>
   )
 }
 

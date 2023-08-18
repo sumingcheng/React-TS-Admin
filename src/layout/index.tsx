@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Layout, Watermark, theme } from 'antd'
+import { Outlet } from 'react-router-dom'
 import BreadCrumbs from '@/layout/components/breadCrumbs'
 import Sidebar from '@/layout/components/sidebar'
 import LayoutHeader from '@/layout/components/header'
@@ -26,8 +27,12 @@ const App: React.FC<Props> = ({ children }) => {
           <Header className="breadcrumbs-header">
             <BreadCrumbs />
           </Header>
-          <Content className="app-content" style={{ background: colorBgContainer }}>
-            <Watermark content="素明诚">{children}</Watermark>
+          <Content
+            className="app-content"
+            style={{ background: colorBgContainer }}>
+            <Watermark content="素明诚">
+              <Outlet />
+            </Watermark>
           </Content>
         </Layout>
       </Layout>

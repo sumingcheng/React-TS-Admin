@@ -2,7 +2,8 @@ import React, { FC, lazy, Suspense } from 'react'
 import { Routes, Route, BrowserRouter } from 'react-router-dom'
 import NProgressHandler from '@/layout/components/nprogress'
 
-const Layout = lazy(() => import('@/layout/index'))
+const Layout = React.lazy(() => import('@/layout'))
+// 预加载资源
 const Home = lazy(
   () => import(/* webpackPrefetch: true */ '@/views/Home/index')
 )

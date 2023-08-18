@@ -89,6 +89,7 @@ module.exports = {
     '@typescript-eslint/no-unused-vars': 'off', // 允许未使用的变量
     '@typescript-eslint/no-var-requires': 'off', // 允许使用 require
     // react
+    'react/react-in-jsx-scope': 'error', // 需要引入 React
     'react/function-component-definition': 'off', // 不要求特定的函数组件定义方式
     'react-hooks/rules-of-hooks': 'error', // 强制使用 React Hooks 规则
     'react-hooks/exhaustive-deps': 'warn', // 警告缺失的依赖项

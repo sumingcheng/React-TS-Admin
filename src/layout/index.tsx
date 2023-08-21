@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Layout, Watermark, theme } from 'antd'
+import { Layout, theme, Watermark } from 'antd'
 import { Outlet } from 'react-router-dom'
 import BreadCrumbs from '@/layout/components/breadCrumbs'
 import Sidebar from '@/layout/components/sidebar'
@@ -28,7 +28,7 @@ const App: React.FC<Props> = ({ children }) => {
             <BreadCrumbs />
           </Header>
           <Content
-            className="app-content"
+            className="app-content relative"
             style={{ background: colorBgContainer }}>
             <Watermark content="素明诚">
               <Outlet />

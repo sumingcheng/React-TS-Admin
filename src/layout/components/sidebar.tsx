@@ -14,11 +14,7 @@ import { getItem, MenuItem } from '@/layout/type'
 const items: MenuItem[] = [
   getItem('首页', '/', <PieChartOutlined />),
   getItem('detail', '/detail', <DesktopOutlined />),
-  getItem('User', 'sub1', <UserOutlined />, [
-    getItem('Tom', '3'),
-    getItem('Bill', '4'),
-    getItem('Alex', '5')
-  ]),
+  getItem('User', '/user', <UserOutlined />),
   getItem('Team', 'sub2', <TeamOutlined />, [
     getItem('Team 1', '6'),
     getItem('Team 2', '8')

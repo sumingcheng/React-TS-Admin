@@ -53,7 +53,7 @@ module.exports = {
 
   // 自定义规则
   rules: {
-    'max-len': ['error', { code: 100, ignoreUrls: true, ignoreStrings: true }],
+    'max-len': ['error', { code: 150, ignoreUrls: true, ignoreStrings: true }],
     'security/detect-non-literal-fs-filename': 'off',
     'prettier/prettier': 'error',
     // 基础规则

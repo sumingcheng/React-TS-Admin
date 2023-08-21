@@ -21,21 +21,21 @@ const App: React.FC<Props> = ({ children }) => {
   return (
     <>
       <LayoutHeader />
-      <Layout>
-        <Sidebar collapsed={collapsed} onCollapse={setCollapsed} />
-        <Layout className={`overflow-y-auto`}>
-          <Header className="breadcrumbs-header">
-            <BreadCrumbs />
-          </Header>
-          <Content
-            className="app-content relative"
-            style={{ background: colorBgContainer }}>
-            <Watermark content="素明诚">
+      <Watermark content="SMC">
+        <Layout>
+          <Sidebar collapsed={collapsed} onCollapse={setCollapsed} />
+          <Layout className={`overflow-y-auto`}>
+            <Header className="breadcrumbs-header">
+              <BreadCrumbs />
+            </Header>
+            <Content
+              className="app-content relative"
+              style={{ background: colorBgContainer }}>
               <Outlet />
-            </Watermark>
-          </Content>
+            </Content>
+          </Layout>
         </Layout>
-      </Layout>
+      </Watermark>
     </>
   )
 }

@@ -39,12 +39,9 @@ const Sidebar: React.FC<{
       collapsible
       collapsed={collapsed}
       onCollapse={onCollapse}>
-      <div className="h-12 text-xl text-white bg-#002140 flex justify-center items-center">
-        React-TS-Admin
-      </div>
       <Menu
         onClick={onClick}
-        theme="dark"
+        theme="light"
         defaultSelectedKeys={['1']}
         mode="inline"
         items={items}

@@ -2,36 +2,46 @@
 
 GREEN_COLOR="\033[32m"
 RESET_COLOR="\033[0m"
+RED_COLOR="\033[31m"
+BLUE_COLOR="\033[34m"
 
 print_green_message() {
-  echo -e "${GREEN_COLOR}$1${RESET_COLOR}\n\n\n"
+  echo -e "${GREEN_COLOR}$1${RESET_COLOR}\n"
 }
 
-# 获取传递给脚本的第一个参数
+print_red_message() {
+  echo -e "${RED_COLOR}$1${RESET_COLOR}\n"
+}
+
+print_blue_message() {
+  echo -e "${BLUE_COLOR}$1${RESET_COLOR}\n"
+}
+
+# Get the first argument passed to the script
 APP_ENV_VALUE=$1
 
-# 当接收到 SIGINT 信号时退出整个脚本
-trap "print_green_message '已退出'; exit" SIGINT
+# Exit the whole script when receiving SIGINT signal
+trap "print_green_message 'Exiting...'; exit" SIGINT
 
 # eslint
-print_green_message "开始执行 eslint..."
+print_blue_message "Running eslint..."
 npm run lint
-print_green_message "eslint 执行成功！"
+print_green_message "eslint completed!"
 
-# 清除 dist 目录
-print_green_message "开始清除 dist 目录..."
+# Clearing dist directory
+print_blue_message "Clearing dist directory..."
 rimraf ./dist
-print_green_message "dist 目录清除成功！"
+print_green_message "dist directory cleared!"
 
-# 执行更新版本号脚本
+# Run update version script
 node ./bin/update-version.js
 
-# 使用传递的参数执行 webpack
-print_green_message "开始执行 webpack 打包..."
+# Run webpack with the passed argument
+print_blue_message "Starting webpack build..."
 cross-env APP_ENV=$APP_ENV_VALUE webpack
-print_green_message "webpack 打包成功！"
+print_green_message "webpack build successful!"
 
-# 执行压缩文件脚本
-print_green_message "开始构建压缩文件..."
+# Run file compression script
+print_blue_message "Building compressed file..."
 node ./bin/zip.js
-print_green_message "文件构建成功！"
+print_green_message "File build completed!"

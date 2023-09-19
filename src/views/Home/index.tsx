@@ -11,7 +11,7 @@ const Home: React.FC = () => {
   const dispatch = useDispatch()
 
   const [count, setCount] = useState(new Demo())
-  count.code = '123'
+
   console.log(count, count.getRequestBody())
 
   const [state, setState] = useState({})

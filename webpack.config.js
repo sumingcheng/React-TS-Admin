@@ -21,10 +21,6 @@ module.exports = {
     chunkFilename: 'js/[id].[contenthash].js'
   },
   devServer: {
-    static: {
-      directory: path.join(__dirname, 'public'),
-      publicPath: '/'
-    },
     compress: true, // 是否启用 gzip 压缩
     open: false, // 是否打开浏览器
     hot: true, // 启用热模块替换
@@ -32,6 +28,10 @@ module.exports = {
     port: CONFIG.port, // 服务运行的端口
     https: CONFIG.https, // 是否启用 https
     proxy: Proxy(CONFIG) || {}, // 代理配置
+    static: {
+      directory: path.join(__dirname, 'public'),
+      publicPath: '/'
+    },
     client: {
       overlay: false // 全屏覆盖
     }

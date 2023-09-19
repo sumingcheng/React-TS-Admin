@@ -4,10 +4,14 @@ import { Button } from 'antd'
 import { useSelector, useDispatch } from 'react-redux'
 import { toggleTheme } from '@/store/themeSlice'
 import { getData } from '@/api'
+import { Demo } from '@/views/Home/type'
 
 const Home: React.FC = () => {
   const theme = useSelector((state: RootStateType) => state.theme)
   const dispatch = useDispatch()
+
+  const [count, setCount] = useState(new Demo())
+  console.log(count, count.getRequestBody())
 
   const [state, setState] = useState({})
   const getTheme = async () => {

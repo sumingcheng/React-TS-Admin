@@ -18,7 +18,9 @@ const Optimization = CONFIG => {
         vendor: {
           test: /[\\/]node_modules[\\/]/,
           name(module) {
-            const matchResult = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)
+            const matchResult = module.context.match(
+              /[\\/]node_modules[\\/](.*?)([\\/]|$)/
+            )
 
             if (!matchResult) {
               return 'unknown-package'

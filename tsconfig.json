@@ -1,24 +1,25 @@
 {
   "compilerOptions": {
-    "baseUrl": "./",
-    "outDir": "./dist/",
-    "sourceMap": true,
-    "types": ["node", "webpack-env"],
-    "noImplicitAny": true,
-    "module": "commonjs",
-    "target": "es6",
-    "jsx": "react-jsx",
-    "allowJs": true,
-    "moduleResolution": "node",
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
+    "baseUrl": "./",  // 设置模块解析的基本URL
+    "outDir": "./dist/",  // 指定编译后的文件输出目录
+    "sourceMap": true,  // 生成对应的 .map 文件以方便调试
+    "types": ["node", "webpack-env"],  // 指定需要包含的类型声明文件
+    "noImplicitAny": true,  // 当没有类型注解时，产生一个错误
+    "module": "commonjs",  // 使用 CommonJS 模块系统
+    "target": "ES6",  // 编译后的代码目标版本为ES6
+    "experimentalDecorators": true,  // 启用实验性的装饰器特性
+    "jsx": "preserve",  // 保持 JSX 为原始格式，由其他工具处理转换
+    "resolveJsonModule": true,  // 允许导入 JSON 模块
+    "isolatedModules": true,  // 确保每个文件作为单独的模块
+    "allowJs": true,  // 允许编译 JavaScript 文件
+    "moduleResolution": "node",  // 使用 Node.js 风格的模块解析
+    "allowSyntheticDefaultImports": true,  // 允许从没有设置默认导出的模块中默认导入
+    "esModuleInterop": true,  // 为了支持 CommonJS 和 ES6 模块间的互操作性
     "paths": {
-      "@/*": [
-        "src/*"
-      ]
+      "@/*": ["src/*"]  // 设置路径别名，使得可以使用 @ 代替 src
     }
   },
   "include": [
-    "./src/**/*"
+    "./src/**/*"  // 编译器应该编译的文件或目录的模式匹配
   ]
 }

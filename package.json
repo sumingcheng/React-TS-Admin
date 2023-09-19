@@ -39,7 +39,8 @@
     "react-transition-group": "^4.4.5",
     "redux": "^4.2.1",
     "rimraf": "^5.0.1",
-    "ts-node": "^10.9.1"
+    "ts-node": "^10.9.1",
+    "reflect-metadata": "^0.1.13"
   },
   "devDependencies": {
     "@babel/core": "^7.22.9",

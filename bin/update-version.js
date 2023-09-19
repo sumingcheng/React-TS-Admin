@@ -57,11 +57,11 @@ rl.question('🔄是否自动更新版本号? (y/n) ', shouldIncrement => {
     const newVersion = incrementVersion(packageJson.version)
     updateVersion(newVersion)
   } else {
-    rl.question('🖖是否手动更新版本号? (y/n) ', shouldUpdate => {
+    rl.question('🔢是否手动更新版本号? (y/n) ', shouldUpdate => {
       if (shouldUpdate.toLowerCase() === 'y') {
         askVersion()
       } else {
-        console.log('🙂版本未更新。')
+        console.log('🙂版本出现错误')
         rl.close()
       }
     })

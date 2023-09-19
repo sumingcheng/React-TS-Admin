@@ -10,7 +10,6 @@ const Home = lazy(
 const Detail = lazy(
   () => import(/* webpackPrefetch: true */ '@/views/Detail/routes')
 )
-
 const User = lazy(
   () => import(/* webpackPrefetch: true */ '@/views/User/index')
 )

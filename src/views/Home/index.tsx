@@ -1,20 +1,21 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import '@/assets/home.less'
 import { Button } from 'antd'
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { toggleTheme } from '@/store/themeSlice'
 import { getData } from '@/api'
 import { Demo } from '@/views/Home/type'
 
 const Home: React.FC = () => {
-  const theme = useSelector((state: RootStateType) => state.theme)
+  // const theme = useSelector((state: RootStateType) => state.theme)
   const dispatch = useDispatch()
 
   const [count, setCount] = useState(new Demo())
+  useEffect(() => {
+    console.log(count, count.getRequestBody())
+  }, [])
 
-  console.log(count, count.getRequestBody())
-
-  const [state, setState] = useState({})
+  const [state, setState] = useState(null)
   const getTheme = async () => {
     const res = await getData()
     console.log(res)
@@ -23,16 +24,15 @@ const Home: React.FC = () => {
 
   return (
     <div>
-      <Button onClick={() => dispatch(toggleTheme())}>切换主题</Button>
+      <Button onClick={() => dispatch(toggleTheme())}>测试按钮</Button>
       <Button type={'primary'} onClick={() => getTheme()}>
-        请求
+        请求数据测试
       </Button>
-      <div>{JSON.stringify(state)}</div>
+      <div>{state && JSON.stringify(state)}</div>
       <div className={`h-96`}></div>
       <div className={`h-96`}></div>
       <div className={`h-96`}></div>
       <div className={`h-96`}></div>
-      <h1 className="text-3xl font-bold underline bg-sky-500">{theme}</h1>
     </div>
   )
 }

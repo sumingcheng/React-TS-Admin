@@ -8,7 +8,8 @@
     "dev:other": "cross-env APP_ENV=devOther webpack serve",
     "build": "sh ./bin/before.sh prod",
     "build:sit": "sh ./bin/before.sh sit",
-    "lint": "eslint ./src/ --ext .ts,.tsx --fix"
+    "lint": "eslint ./src/ --ext .ts,.tsx --fix",
+    "prepare": "husky install"
   },
   "keywords": [],
   "author": "sumingcheng",

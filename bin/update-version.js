@@ -9,7 +9,7 @@ const rl = readline.createInterface({
 })
 
 const packageJsonPath = path.resolve(__dirname, '../package.json')
-const versionHistoryPath = path.resolve(__dirname, './version-history.json')
+const versionHistoryPath = path.resolve(__dirname, '../config/version-history.json')
 
 function incrementVersion(oldVersion) {
   const parts = oldVersion.split('.')

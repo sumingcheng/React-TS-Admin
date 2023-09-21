@@ -26,7 +26,7 @@ module.exports = {
     },
     // 指定 TypeScript 解析器应解析哪些文件
     'import/parsers': {
-      '@typescript-eslint/parser': ['.ts', '.tsx']
+      '@typescript-eslint/parser': ['.ts', '.tsx', '.js']
     },
     // 使用 TypeScript 解析器作为模块解析器
     'import/resolver': {

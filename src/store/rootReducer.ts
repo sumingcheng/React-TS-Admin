@@ -1,10 +1,12 @@
-// combineReducers 可以将多个 reducer 函数合并成一个 rootReducer
 import { combineReducers } from '@reduxjs/toolkit'
-import themeReducer from './themeSlice'
+import counterReducer from './slices/counterSlice'
 
+// 使用 combineReducers 组合所有的 reducers
 const rootReducer = combineReducers({
-  // 这意味着你可以使用 state.theme 来访问 themeReducer 管理的状态
-  theme: themeReducer
+  counter: counterReducer // 将 counterSlice 的 reducer 放入 'counter' key 下
 })
+
+// 导出 RootState 类型，代表整个应用的 state 类型
+export type RootState = ReturnType<typeof rootReducer>
 
 export default rootReducer

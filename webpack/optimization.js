@@ -8,15 +8,10 @@ const Optimization = CONFIG => {
       chunks: 'all',
       automaticNameDelimiter: '~',
       cacheGroups: {
-        // reactDom: {
-        //   test: /[\\/]node_modules[\\/]react-dom[\\/]/,
-        //   name: 'react-dom',
-        //   chunks: 'all',
-        //   minSize: 2 * 1024, // 50KB
-        //   maxSize: 5 * 1024 // 100KB
-        // },
         vendor: {
           test: /[\\/]node_modules[\\/]/,
+          maxSize: 244 * 1024, // 244 KiB
+          minSize: 50 * 1024, // 30 KiB
           name(module) {
             const matchResult = module.context.match(
               /[\\/]node_modules[\\/](.*?)([\\/]|$)/

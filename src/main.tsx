@@ -7,6 +7,7 @@ import RootRoute from '@/router'
 import 'nprogress/nprogress.css'
 import '@/assets/global/tailwind.css'
 import '@/assets/global/normalize.less'
+import { setTitle } from '@/utils/dynamicSettings'
 
 const store = configureStore({
   reducer: rootReducer
@@ -23,5 +24,5 @@ function Root() {
 }
 
 createRoot(document.getElementById('root')).render(<Root />)
-// 动态设置标题
-document.getElementsByTagName('title')[0].innerHTML = process.env.tabTitle
+// 设置标题
+setTitle()

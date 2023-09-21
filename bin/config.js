@@ -11,7 +11,11 @@ const envConfig = {
   other
 }
 
-// 导出对应配置
-module.exports = {
-  ...envConfig[APP_ENV]
+if (!envConfig[APP_ENV]) {
+  throw new Error(
+    `Configuration for ${APP_ENV} not found! Please check your bin/config files.`
+  )
 }
+
+// 导出对应配置
+module.exports = envConfig[APP_ENV]

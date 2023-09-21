@@ -16,3 +16,7 @@ export function getItem(
     label
   } as MenuItem
 }
+
+export interface Props {
+  children?: React.ReactNode
+}

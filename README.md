@@ -1,28 +1,23 @@
-# React-TS-Admin
+# React-TS-Admin: A Comprehensive Management System
 
-## 框架功能说明
+## Introduction to React-TS-Admin
 
-1. 可配置开发环境和生产环境
-2. 通过细化和分包，使得 webpack 配置更清晰，支持按需加载
-3. 在 git 提交前进行代码检查
-4. 优化了打包速度和体积，支持自动生成 zip 文件和构建分析
-5. 优化了打包界面，减少无关的输出信息
-6. 集成了 Redux、Less、Ant Design、TailwindCSS、TypeScript，以及对 Axios 进行了二次封装
-7. 兼容主流的浏览器
-8. 更新版本也要更新对应config内的版本号
+### Motivation Behind the Project
 
-## 待办
+While there are numerous open-source React-based admin systems available, many did not resonate with my preferences. This spurred the idea of creating a front-end system from scratch. Once this project nears completion, I plan to document the design and development of each module in detail. This will empower others to craft their own robust admin systems from the ground up.
 
-1. 搭建管理系统整体框架
-2. 自动路由
-3. layout路由设计
-4. 设置所有页面的路由&&默认跳转登录页
-5. 封装自定义hooks控制菜单栏
-6. 封装自定义hooks控制显示头部
-7. 保持菜单menu高亮
-8. 页面内部样式 css module
-9. redux 菜单联动，数据流设计思想
-10. 主流文件上传技术案例方案
-11. 图片上传功能组件
-12. 实现二级分类的课程新增功能
-13. useEffect 拉取动态数据的设计思想
+## Key Features
+
+1. **Tech Stack**: Integrated with React 18, Redux, Less, Ant Design, TailwindCSS, and TypeScript. Additionally, Axios has been enhanced with a secondary encapsulation for improved functionality.
+2. **Environment Flexibility**: Easily expandable multi-environment configurations located under the 'config' directory.
+3. **Modular Webpack Configuration**: A decomposed approach to Webpack ensures a clutter-free configuration.
+4. **Optimized Webpack**: By refining and bundling, the Webpack setup is more transparent and supports lazy loading.
+5. **Husky Hooks**: Implements pre-commit checks to ensure code integrity.
+6. **Linting Tools**: Integrated with eslint and stylelint to reduce code discrepancies and maintain a consistent codebase.
+7. **Build Enhancements**: Features automatic zip file generation and build analytics.
+8. **Streamlined Build Output**: Minimized superfluous build output for a cleaner interface.
+9. **Versioning**: Automated build version updates with an option for manual updates as needed.
+
+## Live Demo
+
+Deployment is underway and a live demo will be available soon.

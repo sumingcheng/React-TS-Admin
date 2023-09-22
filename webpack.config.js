@@ -1,17 +1,18 @@
 const path = require('path')
+
 // 模块化配置
 const Module = require('./webpack/module')
 const Plugins = require('./webpack/plugins')
 const Optimization = require('./webpack/optimization')
 const Proxy = require('./webpack/proxy')
 const Stats = require('./webpack/stats')
-// 配置文件
+
 const CONFIG = require('./bin/config')
-console.log(CONFIG.mode, CONFIG.modeName)
+
+console.log(CONFIG.mode, CONFIG.Environment)
 
 module.exports = {
   mode: CONFIG.mode,
-  devtool: CONFIG.devtool,
   entry: './src/main.tsx',
   output: {
     clean: true,
@@ -20,38 +21,40 @@ module.exports = {
     filename: 'js/[name].[contenthash].js',
     chunkFilename: 'js/[id].[contenthash].js'
   },
+
+  devtool: CONFIG.devtool,
   devServer: {
-    compress: true, // 是否启用 gzip 压缩
-    open: false, // 是否打开浏览器
-    hot: true, // 启用热模块替换
+    compress: true,
+    open: false,
+    hot: true,
     historyApiFallback: true,
-    port: CONFIG.port, // 服务运行的端口
-    https: CONFIG.https, // 是否启用 https
-    proxy: Proxy(CONFIG) || {}, // 代理配置
+    port: CONFIG.port,
+    https: CONFIG.https,
+    proxy: Proxy(CONFIG),
     static: {
       directory: path.join(__dirname, 'public'),
       publicPath: '/'
     },
     client: {
-      overlay: false // 全屏覆盖
+      overlay: false
     }
   },
+
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src/')
     },
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
-    modules: [path.resolve(__dirname, 'src'), 'node_modules'] // 缩小打包范围
+    modules: [path.resolve(__dirname, 'src'), 'node_modules']
   },
+
+  plugins: Plugins(CONFIG),
+  module: Module(CONFIG),
+  optimization: Optimization(CONFIG),
+
   cache: {
     type: 'filesystem'
   },
-  // 插件
-  plugins: Plugins(CONFIG) || [],
-  // 代码分割
-  optimization: Optimization(CONFIG) || {},
-  // 模块化配置
-  module: Module(CONFIG) || {},
-  // 输出构建信息
-  stats: Stats(CONFIG) || {}
+
+  stats: Stats(CONFIG)
 }

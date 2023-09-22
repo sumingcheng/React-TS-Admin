@@ -1,7 +1,7 @@
 module.exports = {
   // webpack-dev-server 配置
   mode: 'production',
-  modeName: 'prod',
+  Environment: 'prod',
   port: 22222,
   https: false,
   devtool: false, // 是否启用 source-map

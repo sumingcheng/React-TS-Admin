@@ -1,7 +1,7 @@
 module.exports = {
   // webpack-dev-server 配置
   mode: 'production',
-  modeName: 'sit',
+  Environment: 'sit',
   port: 22222,
   https: false,
   devtool: false,

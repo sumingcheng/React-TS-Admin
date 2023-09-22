@@ -13,6 +13,7 @@
     "build:prod": "cross-env sh bin/build.sh prod",
     "build:sit": "cross-env sh bin/build.sh sit",
     "lint": "eslint ./src/ --ext .ts,.tsx --fix",
+    "stylelint": "stylelint \"**/*.less\" --fix",
     "prepare": "husky install"
   },
   "keywords": [],
@@ -75,6 +76,10 @@
     "less-loader": "^11.1.3",
     "mini-css-extract-plugin": "^2.7.6",
     "postcss": "^8.4.27",
+    "postcss-less": "4.0.1",
+    "stylelint": "^14.1.0",
+    "stylelint-config-prettier": "^9.0.3",
+    "stylelint-config-standard": "^24.0.0",
     "prettier": "^3.0.2",
     "style-loader": "^3.3.3",
     "tailwindcss": "^3.3.3",

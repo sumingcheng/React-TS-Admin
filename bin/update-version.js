@@ -3,13 +3,28 @@ const readline = require('readline')
 const path = require('path')
 const dayjs = require('dayjs')
 
+// 获取环境配置文件
+const ProcessArgv = process.argv[2]
+const packagingEnvironmentPath = path.resolve(
+  __dirname,
+  `../config/${ProcessArgv}.js`
+)
+const packagingEnvironment = require(packagingEnvironmentPath)
+
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout
 })
 
+// 获取 package.json
 const packageJsonPath = path.resolve(__dirname, '../package.json')
-const versionHistoryPath = path.resolve(__dirname, '../config/version-history.json')
+const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'))
+
+// 版本历史
+const versionHistoryPath = path.resolve(
+  __dirname,
+  '../config/version-history.json'
+)
 
 function incrementVersion(oldVersion) {
   const parts = oldVersion.split('.')
@@ -17,51 +32,53 @@ function incrementVersion(oldVersion) {
   return parts.join('.')
 }
 
-function askVersion() {
-  rl.question('输入新版本: ', newVersion => {
-    const isValidVersion = /^\d+\.\d+\.\d+$/.test(newVersion)
+function updateConfigVersion(newVersion) {
+  const configData = fs.readFileSync(packagingEnvironmentPath, 'utf8')
+  const updatedConfigData = configData.replace(
+    /version: '.*?'/,
+    `version: '${newVersion}'`
+  )
+  fs.writeFileSync(packagingEnvironmentPath, updatedConfigData)
+}
 
-    if (isValidVersion) {
-      updateVersion(newVersion)
-    } else {
-      console.log('版本格式无效。请输入有效版本。')
-      askVersion()
-    }
-  })
+function updateVersionHistory(newVersion) {
+  const now = dayjs().format('YYYY年M月D日 H:mm:ss')
+  const versionHistory = fs.existsSync(versionHistoryPath)
+    ? JSON.parse(fs.readFileSync(versionHistoryPath, 'utf8'))
+    : []
+  versionHistory.unshift({
+    configEnv: ProcessArgv,
+    version: newVersion,
+    date: now
+  }) // Added the configEnv field here
+  fs.writeFileSync(versionHistoryPath, JSON.stringify(versionHistory, null, 2))
 }
 
 function updateVersion(newVersion) {
-  const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'))
+  // Update package.json
   packageJson.version = newVersion
   fs.writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 2))
 
-  // 检查 version-history.json 文件是否存在
-  if (!fs.existsSync(versionHistoryPath)) {
-    // 如果文件不存在，创建一个包含空数组的新文件
-    fs.writeFileSync(versionHistoryPath, JSON.stringify([], null, 2))
-  }
+  // Update config version
+  updateConfigVersion(newVersion)
 
-  const now = dayjs().format('YYYY年M月D日 H:mm:ss')
-  const versionHistory = JSON.parse(fs.readFileSync(versionHistoryPath, 'utf8'))
-  versionHistory.unshift({ version: newVersion, date: now })
-  fs.writeFileSync(versionHistoryPath, JSON.stringify(versionHistory, null, 2))
-
-  console.log(`🆕版本更新至 ${newVersion}!`)
-
-  rl.close()
+  // Update version history
+  updateVersionHistory(newVersion)
 }
 
 rl.question('🔄是否自动更新版本号? (y/n) ', shouldIncrement => {
   if (shouldIncrement.toLowerCase() === 'y') {
-    const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'))
-    const newVersion = incrementVersion(packageJson.version)
+    const newVersion = incrementVersion(packagingEnvironment.version)
     updateVersion(newVersion)
+    rl.close()
   } else {
-    rl.question('🔢是否手动更新版本号? (y/n) ', shouldUpdate => {
-      if (shouldUpdate.toLowerCase() === 'y') {
-        askVersion()
+    rl.question('输入新版本: ', newVersion => {
+      const isValidVersion = /^\d+\.\d+\.\d+$/.test(newVersion)
+      if (isValidVersion) {
+        updateVersion(newVersion)
+        rl.close()
       } else {
-        console.log('🙂版本出现错误')
+        console.log('版本格式无效。请输入有效版本。')
         rl.close()
       }
     })

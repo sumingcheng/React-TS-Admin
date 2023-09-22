@@ -18,7 +18,7 @@ print_blue_message() {
 }
 
 # Get the first argument passed to the script
-APP_ENV_VALUE=$1
+APP_ENV_VALUE="$1"
 
 # Exit the whole script when receiving SIGINT signal
 trap "print_green_message 'Exiting...'; exit" SIGINT
@@ -34,11 +34,11 @@ rimraf ./dist
 print_green_message "dist directory cleared!"
 
 # Run update version script
-node ./bin/update-version.js
+node ./bin/update-version.js "$APP_ENV_VALUE"
 
 # Run webpack with the passed argument
 print_blue_message "Starting webpack build..."
-cross-env APP_ENV=$APP_ENV_VALUE webpack
+cross-env APP_ENV="$APP_ENV_VALUE" webpack
 print_green_message "webpack build successful!"
 
 # Run file compression script

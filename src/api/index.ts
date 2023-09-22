@@ -1,7 +1,7 @@
-import AxiosInstances from '@/utils/http'
+import AxiosInstance from '@/utils/AxiosInstance'
 
 export function getData() {
-  return AxiosInstances({
+  return AxiosInstance({
     url: '/todos/1',
     method: 'get'
   })

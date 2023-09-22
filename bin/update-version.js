@@ -69,8 +69,9 @@ rl.question('🔄是否自动更新版本号? (y/n) ', shouldIncrement => {
         updateVersion(newVersion)
         rl.close()
       } else {
-        console.log('版本格式无效。')
+        console.log('版本格式无效')
         rl.close()
+        process.exit(1)
       }
     })
   }

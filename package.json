@@ -10,7 +10,7 @@
     "build:prod": "sh ./bin/before.sh prod",
     "build:sit": "sh ./bin/before.sh sit",
     "lint": "eslint ./src/ --ext .ts,.tsx --fix",
-    "prepare": " install"
+    "prepare": "husky install"
   },
   "keywords": [],
   "author": "sumingcheng",

@@ -28,6 +28,11 @@ print_blue_message "Running eslint..."
 npm run lint
 print_green_message "eslint completed!"
 
+# stylelint
+print_blue_message "Running stylelint..."
+npm run stylelint
+print_green_message "stylelint completed!"
+
 # Clearing dist directory
 print_blue_message "Clearing dist directory..."
 rimraf ./dist

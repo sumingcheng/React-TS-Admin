@@ -5,8 +5,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const WebpackBar = require('webpackbar')
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
-
-const isProduction = process.env.NODE_ENV === 'production'
+const { isProduction } = require('./env')
 
 const Plugins = CONFIG => {
   const basePlugins = [

@@ -9,4 +9,5 @@ const Stats = CONFIG => {
     timings: true // 显示每个模块的构建时间
   }
 }
+
 module.exports = Stats

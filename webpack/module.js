@@ -1,5 +1,4 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const CONFIG = require('../bin/config')
 
 const isProduction = process.env.NODE_ENV === 'production'
 
@@ -12,11 +11,7 @@ const Module = CONFIG => {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: [
-              '@babel/preset-env',
-              '@babel/preset-react',
-              '@babel/preset-typescript'
-            ],
+            presets: ['@babel/preset-env', '@babel/preset-react', '@babel/preset-typescript'],
             plugins: [
               ['@babel/plugin-proposal-decorators', { legacy: true }]
               // ...其他插件

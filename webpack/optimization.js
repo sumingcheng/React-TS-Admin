@@ -13,9 +13,7 @@ const Optimization = CONFIG => {
           maxSize: 244 * 1024, // 244 KiB
           minSize: 50 * 1024, // 30 KiB
           name(module) {
-            const matchResult = module.context.match(
-              /[\\/]node_modules[\\/](.*?)([\\/]|$)/
-            )
+            const matchResult = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)
 
             if (!matchResult) {
               return 'unknown-package'

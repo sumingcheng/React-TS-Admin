@@ -25,9 +25,7 @@ const App: React.FC<Props> = ({ children }) => {
             <Header className="breadcrumbs-header">
               <BreadCrumbs />
             </Header>
-            <Content
-              className="app-content relative"
-              style={{ background: colorBgContainer }}>
+            <Content className="app-content relative" style={{ background: colorBgContainer }}>
               <Outlet />
             </Content>
           </Layout>

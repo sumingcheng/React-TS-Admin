@@ -27,27 +27,13 @@ export const HttpBindNormal = (serverPropertyPath?: string) => {
 }
 
 // 数组属性绑定函数
-export const HttpBindArray = (
-  serverPropertyPath: string,
-  createItemFunction?: string
-) => {
-  return defineMetadataForBinding(
-    ServerPropertyType.ARRAY,
-    serverPropertyPath,
-    createItemFunction
-  )
+export const HttpBindArray = (serverPropertyPath: string, createItemFunction?: string) => {
+  return defineMetadataForBinding(ServerPropertyType.ARRAY, serverPropertyPath, createItemFunction)
 }
 
 // 对象属性绑定函数
-export const HttpBindObject = (
-  serverPropertyPath: string,
-  createItemFunction?: string
-) => {
-  return defineMetadataForBinding(
-    ServerPropertyType.OBJECT,
-    serverPropertyPath,
-    createItemFunction
-  )
+export const HttpBindObject = (serverPropertyPath: string, createItemFunction?: string) => {
+  return defineMetadataForBinding(ServerPropertyType.OBJECT, serverPropertyPath, createItemFunction)
 }
 
 // 辅助函数：为属性定义元数据，减少重复代码
@@ -79,20 +65,14 @@ export abstract class FrontModel {
   initFromResponse(res: object) {
     const metadataKeys: Array<string> = Reflect.getMetadataKeys(this)
     metadataKeys.forEach((metadataKey: string) => {
-      const metadataValue: IHttpBindNormal = Reflect.getMetadata(
-        metadataKey,
-        this
-      )
+      const metadataValue: IHttpBindNormal = Reflect.getMetadata(metadataKey, this)
       this.handleResponseDataByType(metadataValue, res)
     })
     this.afterInitFromResponse()
   }
 
   // 根据类型处理响应数据
-  private handleResponseDataByType(
-    metadataValue: IHttpBindNormal,
-    res: object
-  ) {
+  private handleResponseDataByType(metadataValue: IHttpBindNormal, res: object) {
     const resValue = _.get(res, metadataValue.serverPropertyPath)
     switch (metadataValue.serverPropertyTypeName) {
       case ServerPropertyType.NORMAL:
@@ -141,10 +121,7 @@ export abstract class FrontModel {
     const metadataKeys: Array<string> = Reflect.getMetadataKeys(this)
     const requestBody = new RequestDataBaseType()
     metadataKeys.forEach((metadataKey: string) => {
-      const metadataValue: IHttpBindNormal = Reflect.getMetadata(
-        metadataKey,
-        this
-      )
+      const metadataValue: IHttpBindNormal = Reflect.getMetadata(metadataKey, this)
       const propertyValue = _.get(this, metadataValue.propertyName)
       switch (metadataValue.serverPropertyTypeName) {
         case ServerPropertyType.NORMAL:
@@ -161,11 +138,7 @@ export abstract class FrontModel {
           break
         case ServerPropertyType.OBJECT:
           if (propertyValue) {
-            _.set(
-              requestBody,
-              metadataValue.serverPropertyPath,
-              propertyValue.getRequestBody()
-            )
+            _.set(requestBody, metadataValue.serverPropertyPath, propertyValue.getRequestBody())
           }
           break
       }

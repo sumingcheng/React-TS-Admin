@@ -33,8 +33,7 @@ export const counterSlice = createSlice({
 export const { increment, decrement, incrementByAmount } = counterSlice.actions
 
 // 导出 selector 以供组件使用来选择 state
-export const selectCount = (state: { counter: CounterState }) =>
-  state.counter.value
+export const selectCount = (state: { counter: CounterState }) => state.counter.value
 
 // 导出 reducer 供 store 使用
 export default counterSlice.reducer

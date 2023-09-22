@@ -15,10 +15,7 @@ const items: MenuItem[] = [
   getItem('首页', '/', <PieChartOutlined />),
   getItem('detail', '/detail', <DesktopOutlined />),
   getItem('User', '/user', <UserOutlined />),
-  getItem('Team', 'sub2', <TeamOutlined />, [
-    getItem('Team 1', '6'),
-    getItem('Team 2', '8')
-  ]),
+  getItem('Team', 'sub2', <TeamOutlined />, [getItem('Team 1', '6'), getItem('Team 2', '8')]),
   getItem('Files', '9', <FileOutlined />)
 ]
 

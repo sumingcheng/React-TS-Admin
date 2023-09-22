@@ -4,15 +4,9 @@ import NProgressHandler from '@/layout/nprogress'
 
 const Layout = React.lazy(() => import('@/layout'))
 // 预加载资源
-const Home = lazy(
-  () => import(/* webpackPrefetch: true */ '@/views/Home/index')
-)
-const Detail = lazy(
-  () => import(/* webpackPrefetch: true */ '@/views/Detail/routes')
-)
-const User = lazy(
-  () => import(/* webpackPrefetch: true */ '@/views/User/index')
-)
+const Home = lazy(() => import(/* webpackPrefetch: true */ '@/views/Home/index'))
+const Detail = lazy(() => import(/* webpackPrefetch: true */ '@/views/Detail/routes'))
+const User = lazy(() => import(/* webpackPrefetch: true */ '@/views/User/index'))
 
 const App: FC = () => {
   return (

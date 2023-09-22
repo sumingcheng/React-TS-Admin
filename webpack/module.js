@@ -1,7 +1,7 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CONFIG = require('../bin/config')
 
-const isProduction = CONFIG.mode === 'production'
+const isProduction = process.env.NODE_ENV === 'production'
 
 const Module = CONFIG => {
   return {

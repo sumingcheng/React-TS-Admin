@@ -38,7 +38,7 @@ node ./bin/update-version.js "$APP_ENV_VALUE"
 
 # Run webpack with the passed argument
 print_blue_message "Starting webpack build..."
-cross-env APP_ENV="$APP_ENV_VALUE" webpack
+cross-env NODE_ENV=production APP_ENV="$APP_ENV_VALUE" webpack
 print_green_message "webpack build successful!"
 
 # Run file compression script

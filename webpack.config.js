@@ -9,10 +9,10 @@ const Stats = require('./webpack/stats')
 
 const CONFIG = require('./bin/config')
 
-console.log(CONFIG.mode, CONFIG.Environment)
+console.log(process.env.NODE_ENV, CONFIG.Environment)
 
 module.exports = {
-  mode: CONFIG.mode,
+  mode: process.env.NODE_ENV,
   entry: './src/main.tsx',
   output: {
     clean: true,

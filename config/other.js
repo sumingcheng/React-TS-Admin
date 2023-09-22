@@ -1,6 +1,5 @@
 module.exports = {
   // webpack-dev-server 配置
-  mode: 'development',
   Environment: 'other',
   port: 22222,
   https: false,

@@ -7,12 +7,12 @@ const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const CONFIG = require('../bin/config')
 
-const isProduction = CONFIG.mode === 'production'
+const isProduction = process.env.NODE_ENV === 'production'
 
 const Plugins = CONFIG => {
   const basePlugins = [
     new webpack.EnvironmentPlugin({
-      NODE_ENV: CONFIG.mode,
+      NODE_ENV: process.env.NODE_ENV,
       BASE_URL: CONFIG.BASE_URL,
       tabTitle: CONFIG.tabTitle,
       menuTitle: CONFIG.menuTitle,

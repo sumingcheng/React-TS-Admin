@@ -9,7 +9,12 @@ const Stats = require('./webpack/stats')
 
 const CONFIG = require('./bin/config')
 
-console.log(process.env.NODE_ENV, CONFIG.Environment)
+console.log(
+  'NODE_ENV:',
+  process.env.NODE_ENV,
+  'Environment:',
+  CONFIG.Environment
+)
 
 module.exports = {
   mode: process.env.NODE_ENV,

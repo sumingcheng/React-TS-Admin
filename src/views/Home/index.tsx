@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { FC } from 'react'
 import '@/assets/home.less'
 import { Button } from 'antd'
 // import { useDispatch } from 'react-redux'
 import { getData } from '@/api'
 import { Demo } from '@/views/Home/type'
 
-const Home: React.FC = () => {
+const Home: FC = () => {
   // const theme = useSelector((state: RootStateType) => state.theme)
   // const dispatch = useDispatch()
 

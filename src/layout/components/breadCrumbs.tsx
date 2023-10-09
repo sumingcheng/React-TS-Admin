@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { FC } from 'react'
 import { Breadcrumb } from 'antd'
 
-const App: React.FC = () => (
+const App: FC = () => (
   <Breadcrumb
     className={`text-sm`}
     separator=">"

@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { FC } from 'react'
 import { Button } from 'antd'
 
-const User: React.FC = () => {
+const User: FC = () => {
   return (
     <div>
       <Button type="primary">User</Button>

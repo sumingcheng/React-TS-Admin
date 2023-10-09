@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { FC } from 'react'
 import { Menu, MenuProps } from 'antd'
 import {
   DesktopOutlined,
@@ -19,7 +19,7 @@ const items: MenuItem[] = [
   getItem('Files', '9', <FileOutlined />)
 ]
 
-const Sidebar: React.FC<{
+const Sidebar: FC<{
   collapsed: boolean
   onCollapse: (value: boolean) => void
 }> = ({ collapsed, onCollapse }) => {

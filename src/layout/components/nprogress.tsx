@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { FC } from 'react'
 import { useLocation } from 'react-router-dom'
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
 
-const NProgressHandler: React.FC = () => {
+const NProgressHandler: FC = () => {
   const location = useLocation()
 
   useEffect(() => {

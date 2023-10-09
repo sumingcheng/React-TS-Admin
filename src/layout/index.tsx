@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { FC } from 'react'
 import { Layout, theme, Watermark } from 'antd'
 import { Outlet } from 'react-router-dom'
 import BreadCrumbs from '@/layout/components/breadCrumbs'
@@ -9,7 +9,7 @@ import { Props } from '@/layout/type'
 
 const { Header, Content } = Layout
 
-const App: React.FC<Props> = ({ children }) => {
+const App: FC<Props> = ({ children }) => {
   const [collapsed, setCollapsed] = useState(false)
   const {
     token: { colorBgContainer }

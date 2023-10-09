@@ -10,7 +10,7 @@ print_colored() {
 }
 
 # 提交类型定义
-COMMIT_TYPES="feat|fix|chore|docs|style|refactor|perf|test|eslint|build|ci|revert"
+COMMIT_TYPES="refactor|fix|chore|docs|style|refactor|perf|test|eslint|build|ci|revert"
 
 # 获取提交消息内容
 MSG=$(cat "$1")

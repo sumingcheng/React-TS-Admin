@@ -1,6 +1,6 @@
 import React, { FC, Suspense } from 'react'
 import { Routes, Route, BrowserRouter } from 'react-router-dom'
-import NProgressHandler from '@/layout/nprogress'
+import NProgressHandler from '@/layout/components/nprogress'
 
 const Layout = React.lazy(() => import('@/layout'))
 // 预加载资源

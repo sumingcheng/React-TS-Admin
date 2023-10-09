@@ -21,6 +21,7 @@
   },
   "include": [
     "./src/**/*",
-    "./shims/auto-imports.d.ts"
+    "./shims/auto-imports.d.ts",
+    "./shims/globals.d.ts"
   ]
 }

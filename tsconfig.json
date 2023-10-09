@@ -20,6 +20,7 @@
     }
   },
   "include": [
-    "./src/**/*"  // 编译器应该编译的文件或目录的模式匹配
+    "./src/**/*",
+    "./shims/auto-imports.d.ts"
   ]
 }

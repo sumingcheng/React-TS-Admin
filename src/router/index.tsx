@@ -1,4 +1,4 @@
-import React, { FC, lazy, Suspense } from 'react'
+import React, { FC, Suspense } from 'react'
 import { Routes, Route, BrowserRouter } from 'react-router-dom'
 import NProgressHandler from '@/layout/nprogress'
 

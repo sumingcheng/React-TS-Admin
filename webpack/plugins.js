@@ -5,10 +5,15 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const WebpackBar = require('webpackbar')
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
+const AutoImportPlugin = require('unplugin-auto-import/webpack')
 const { isProduction } = require('./env')
 
 const Plugins = CONFIG => {
   const basePlugins = [
+    AutoImportPlugin({
+      dts: './shims/auto-imports.d.ts',
+      imports: ['react']
+    }),
     new webpack.EnvironmentPlugin({
       NODE_ENV: process.env.NODE_ENV,
       BASE_URL: CONFIG.BASE_URL,

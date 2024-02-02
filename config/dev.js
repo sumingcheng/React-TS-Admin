@@ -5,7 +5,7 @@ module.exports = {
   https: false,
   devtool: 'eval-source-map',
   // 项目配置
-  BASE_URL: 'https://172.40.253.155:15000', // 接口请求地址
+  BASE_URL: 'http://172.40.253.155:15000', // 接口请求地址
   tabTitle: 'React-TS-Admin', // 浏览器页签名称
   menuTitle: 'React-TS-Admin', // 菜单名称
   version: '2.0.2',

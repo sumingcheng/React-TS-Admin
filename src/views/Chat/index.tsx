@@ -1,7 +1,7 @@
 import React, { FC, useState, useEffect, useCallback } from 'react'
 import './chat.less'
 import { Button, Input, List, Avatar, notification } from 'antd'
-import { SendOutlined } from '@ant-design/icons'
+import { SendOutlined, UserOutlined, RobotOutlined } from '@ant-design/icons'
 import { getAnswer } from '@/api'
 import { Message } from '@/views/Chat/type'
 
@@ -38,7 +38,7 @@ const Chat: FC = () => {
 
     try {
       const res = await getAnswer({
-        cid: 'chatglm2-6b',
+        cid: 'QmXQSbMk72Frm5fToarHQTDmP3mh7JusYkJmBtK1mm6sSj',
         question: inputValue
         // 根据需要添加更多历史记录等
       })
@@ -71,9 +71,8 @@ const Chat: FC = () => {
             <List.Item.Meta
               avatar={
                 <Avatar
-                  src={
-                    item.sender === 'user' ? '/path/to/user-avatar-url' : '/path/to/bot-avatar-url'
-                  }
+                  className={'avatar'}
+                  icon={item.sender === 'user' ? <UserOutlined /> : <RobotOutlined />}
                 />
               }
               title={item.sender === 'user' ? '你' : 'ChatBot'}

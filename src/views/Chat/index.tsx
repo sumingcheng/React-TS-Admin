@@ -14,6 +14,8 @@ const Chat: FC = () => {
   const [inputValue, setInputValue] = useState('')
   const [loading, setLoading] = useState(false)
   const cid = useSelector((state: RootState) => state.urlParams.cid) // 获取cid
+  const name = useSelector((state: RootState) => state.urlParams.name) // 获取cid
+  const [history, setHistory] = useState<Array<[string, string]>>([]) // 维护对话历史
 
   // 使用cid
   console.log('cid', cid)
@@ -21,9 +23,14 @@ const Chat: FC = () => {
   useEffect(() => {
     const welcomeMessage: Message = {
       sender: 'bot',
-      content: '你好👋！我是人工智能助手 ChatGLM2-6B，可以帮助你解答问题。'
+      content: `你好👋！我是人工智能助手 ${name}，可以帮助你解答问题。`
     }
+
     setMessages([welcomeMessage])
+    setHistory([
+      // 初始对话历史
+      ['bot', welcomeMessage.content]
+    ])
   }, [])
 
   const handleInputChange = useCallback((e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -42,11 +49,14 @@ const Chat: FC = () => {
     setInputValue('')
     setLoading(true)
 
+    // 更新history数组
+    const updatedHistory = [...history, ['user', inputValue]]
+
     try {
       const res = await getAnswer({
         cid: cid,
-        question: inputValue
-        // 根据需要添加更多历史记录等
+        question: inputValue,
+        history: updatedHistory // 发送当前对话历史
       })
 
       const botReply: Message = {
@@ -54,6 +64,9 @@ const Chat: FC = () => {
         content: res?.data?.answer || '抱歉，我无法处理你的请求。'
       }
       setMessages(prevMessages => [...prevMessages, botReply])
+
+      // 更新history数组以包含bot的回复
+      setHistory(prevHistory => [...prevHistory, ['bot', botReply.content]])
     } catch (error) {
       console.error('Error sending message:', error)
       notification.error({
@@ -64,7 +77,7 @@ const Chat: FC = () => {
     } finally {
       setLoading(false)
     }
-  }, [inputValue])
+  }, [inputValue, history])
 
   return (
     <div className="chat-container">

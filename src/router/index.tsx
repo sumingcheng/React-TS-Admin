@@ -7,6 +7,7 @@ const Layout = React.lazy(() => import('@/layout'))
 const Home = lazy(() => import(/* webpackPrefetch: true */ '@/views/Home/index'))
 const Detail = lazy(() => import(/* webpackPrefetch: true */ '@/views/Detail/routes'))
 const User = lazy(() => import(/* webpackPrefetch: true */ '@/views/User/index'))
+const Chat = lazy(() => import(/* webpackPrefetch: true */ '@/views/Chat/index'))
 
 const App: FC = () => {
   return (
@@ -16,6 +17,7 @@ const App: FC = () => {
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
             <Route path="/user" element={<User />} />
+            <Route path="/chat" element={<Chat />} />
             <Route path="detail/*" element={<Detail />} />
           </Route>
         </Routes>

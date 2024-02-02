@@ -1,6 +1,7 @@
 import React, { FC, Suspense } from 'react'
 import { Routes, Route, BrowserRouter } from 'react-router-dom'
 import NProgressHandler from '@/layout/components/nprogress'
+import HandleURLParams from '@/utils/HandleURLParams'
 
 const Layout = React.lazy(() => import('@/layout'))
 // 预加载资源
@@ -12,6 +13,7 @@ const Chat = React.lazy(() => import(/* webpackPrefetch: true */ '@/views/Chat/i
 const App: FC = () => {
   return (
     <BrowserRouter>
+      <HandleURLParams />
       <Suspense fallback={<NProgressHandler />}>
         <Routes>
           <Route path="/" element={<Layout />}>

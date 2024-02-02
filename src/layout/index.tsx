@@ -19,7 +19,6 @@ const App: FC<Props> = ({ children }) => {
       <LayoutHeader />
       {/*<Sidebar collapsed={collapsed} onCollapse={setCollapsed} />*/}
       <Layout className={`overflow-y-auto`}>
-        <HandleURLParams />
         {/*<Header className="breadcrumbs-header">/!*<BreadCrumbs />*!/</Header>*/}
         <Content className="app-content relative" style={{ background: colorBgContainer }}>
           <Outlet />

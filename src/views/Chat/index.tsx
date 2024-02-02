@@ -13,7 +13,7 @@ const Chat: FC = () => {
   const [messages, setMessages] = useState<Array<Message>>([])
   const [inputValue, setInputValue] = useState('')
   const [loading, setLoading] = useState(false)
-  const cid = useSelector((state: RootState) => state.cid.value) // 确保state路径和变量名正确
+  const cid = useSelector((state: RootState) => state.urlParams.cid) // 获取cid
 
   // 使用cid
   console.log('cid', cid)

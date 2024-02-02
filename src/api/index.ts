@@ -6,3 +6,11 @@ export function getData() {
     method: 'get'
   })
 }
+
+export function getAnswer(data: any) {
+  return AxiosInstance({
+    url: '/chat/getAnswer',
+    method: 'post',
+    data
+  })
+}

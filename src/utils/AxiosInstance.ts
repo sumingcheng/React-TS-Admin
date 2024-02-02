@@ -40,8 +40,8 @@ AxiosInstances.interceptors.request.use(
 
       if (info.count > 2) {
         // 如果是第二次或更多次重复请求
-        message.warning('请不要重复请求')
-        return Promise.reject('请不要重复请求')
+        message.warning('请求过快')
+        return Promise.reject('请求过快')
       } else {
         return config
       }

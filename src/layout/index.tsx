@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { Layout, theme, Watermark } from 'antd'
+import { Layout, theme } from 'antd'
 import { Outlet } from 'react-router-dom'
 import LayoutHeader from '@/layout/components/header'
 import '@/assets/layout.less'
@@ -16,17 +16,13 @@ const App: FC<Props> = ({ children }) => {
   return (
     <>
       <LayoutHeader />
-      <Watermark content="">
-        <Layout>
-          {/*<Sidebar collapsed={collapsed} onCollapse={setCollapsed} />*/}
-          <Layout className={`overflow-y-auto`}>
-            {/*<Header className="breadcrumbs-header">/!*<BreadCrumbs />*!/</Header>*/}
-            <Content className="app-content relative" style={{ background: colorBgContainer }}>
-              <Outlet />
-            </Content>
-          </Layout>
-        </Layout>
-      </Watermark>
+      {/*<Sidebar collapsed={collapsed} onCollapse={setCollapsed} />*/}
+      <Layout className={`overflow-y-auto`}>
+        {/*<Header className="breadcrumbs-header">/!*<BreadCrumbs />*!/</Header>*/}
+        <Content className="app-content relative" style={{ background: colorBgContainer }}>
+          <Outlet />
+        </Content>
+      </Layout>
     </>
   )
 }

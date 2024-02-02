@@ -7,7 +7,7 @@ const App: FC = () => {
     <Header className="app-header">
       <div>smc</div>
       <div></div>
-      <div>配置项</div>
+      {/*<div>配置项</div>*/}
     </Header>
   )
 }

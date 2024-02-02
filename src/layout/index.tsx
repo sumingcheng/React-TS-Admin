@@ -1,8 +1,6 @@
 import React, { FC } from 'react'
 import { Layout, theme, Watermark } from 'antd'
 import { Outlet } from 'react-router-dom'
-import BreadCrumbs from '@/layout/components/breadCrumbs'
-import Sidebar from '@/layout/components/sidebar'
 import LayoutHeader from '@/layout/components/header'
 import '@/assets/layout.less'
 import { Props } from '@/layout/type'
@@ -18,13 +16,11 @@ const App: FC<Props> = ({ children }) => {
   return (
     <>
       <LayoutHeader />
-      <Watermark content="SMC">
+      <Watermark content="">
         <Layout>
-          <Sidebar collapsed={collapsed} onCollapse={setCollapsed} />
+          {/*<Sidebar collapsed={collapsed} onCollapse={setCollapsed} />*/}
           <Layout className={`overflow-y-auto`}>
-            <Header className="breadcrumbs-header">
-              <BreadCrumbs />
-            </Header>
+            {/*<Header className="breadcrumbs-header">/!*<BreadCrumbs />*!/</Header>*/}
             <Content className="app-content relative" style={{ background: colorBgContainer }}>
               <Outlet />
             </Content>

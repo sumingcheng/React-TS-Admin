@@ -1,7 +1,6 @@
-// Chat.tsx
-import React, { FC, useState, useEffect } from 'react'
+import React, { FC, useState, useEffect, useCallback } from 'react'
 import './chat.less'
-import { Button, Input, List, Avatar } from 'antd'
+import { Button, Input, List, Avatar, notification } from 'antd'
 import { SendOutlined } from '@ant-design/icons'
 import { getAnswer } from '@/api'
 import { Message } from '@/views/Chat/type'
@@ -14,7 +13,6 @@ const Chat: FC = () => {
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
-    // 初始化对话，可以添加欢迎语等
     const welcomeMessage: Message = {
       sender: 'bot',
       content: '你好👋！我是人工智能助手 ChatGLM2-6B，可以帮助你解答问题。'
@@ -22,7 +20,11 @@ const Chat: FC = () => {
     setMessages([welcomeMessage])
   }, [])
 
-  const sendMessage = async () => {
+  const handleInputChange = useCallback((e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setInputValue(e.target.value)
+  }, [])
+
+  const sendMessage = useCallback(async () => {
     if (!inputValue.trim()) return
 
     const newMessage: Message = {
@@ -31,7 +33,6 @@ const Chat: FC = () => {
     }
 
     setMessages(prevMessages => [...prevMessages, newMessage])
-
     setInputValue('')
     setLoading(true)
 
@@ -42,23 +43,22 @@ const Chat: FC = () => {
         // 根据需要添加更多历史记录等
       })
 
-      if (res && res.data) {
-        const botReply: {
-          sender: 'bot'
-          content: string
-        } = {
-          sender: 'bot',
-          content: res.data.answer || '抱歉，我无法处理你的请求。'
-        }
-        setMessages(prevMessages => [...prevMessages, botReply])
+      const botReply: Message = {
+        sender: 'bot',
+        content: res?.data?.answer || '抱歉，我无法处理你的请求。'
       }
+      setMessages(prevMessages => [...prevMessages, botReply])
     } catch (error) {
       console.error('Error sending message:', error)
+      notification.error({
+        message: '发送消息失败',
+        description: '网络错误或服务器问题，请稍后再试。'
+      })
       setMessages(prevMessages => [...prevMessages, { sender: 'bot', content: '发送消息时出错。' }])
     } finally {
       setLoading(false)
     }
-  }
+  }, [inputValue])
 
   return (
     <div className="chat-container">
@@ -86,11 +86,12 @@ const Chat: FC = () => {
         <TextArea
           rows={3}
           value={inputValue}
-          onChange={e => setInputValue(e.target.value)}
+          onChange={handleInputChange}
           onPressEnter={sendMessage}
         />
         <Button
           type="primary"
+          className="sendButton"
           onClick={sendMessage}
           loading={loading}
           icon={<SendOutlined />}

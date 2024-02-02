@@ -6,8 +6,8 @@ module.exports = {
   devtool: 'eval-source-map',
   // 项目配置
   BASE_URL: 'http://172.40.253.155:15000', // 接口请求地址
-  tabTitle: 'React-TS-Admin', // 浏览器页签名称
-  menuTitle: 'React-TS-Admin', // 菜单名称
-  version: '2.0.2',
-  packageName: 'React-TS-Admin-dev' // 打包后的文件夹名称
+  tabTitle: 'AIstore', // 浏览器页签名称
+  menuTitle: 'AIstore', // 菜单名称
+  version: '1.1.1',
+  packageName: 'AIstore-dev' // 打包后的文件夹名称
 }

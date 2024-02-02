@@ -5,7 +5,7 @@ import '@/assets/layout.less'
 const App: FC = () => {
   return (
     <Header className="app-header">
-      <div>smc</div>
+      <div className={'title'}>smc</div>
       <div></div>
       {/*<div>配置项</div>*/}
     </Header>

@@ -1,4 +1,4 @@
-import React, { FC, useState, useEffect, useCallback } from 'react'
+import React, { FC, useState, useCallback, useRef, useEffect } from 'react'
 import './chat.less'
 import { Button, Input, List, Avatar, notification } from 'antd'
 import { SendOutlined, UserOutlined, RobotOutlined } from '@ant-design/icons'
@@ -9,64 +9,74 @@ import { RootState } from '@/store/rootReducer'
 
 const { TextArea } = Input
 
-const Chat: FC = () => {
-  const [messages, setMessages] = useState<Array<Message>>([])
-  const [inputValue, setInputValue] = useState('')
-  const [loading, setLoading] = useState(false)
-  const cid = useSelector((state: RootState) => state.urlParams.cid) // 获取cid
-  const name = useSelector((state: RootState) => state.urlParams.name) // 获取cid
-  const [history, setHistory] = useState<Array<[string, string]>>([]) // 维护对话历史
+interface ChatHistoryEntry {
+  sender: string
+  content: string
+}
 
-  // 使用cid
+const Chat: FC = () => {
+  const [messages, setMessages] = useState<Message[]>([])
+  const [inputValue, setInputValue] = useState<string>('')
+  const [loading, setLoading] = useState<boolean>(false)
+  const cid = useSelector((state: RootState) => state.urlParams.cid) // 获取cid
+  const name = useSelector((state: RootState) => state.urlParams.name) // 获取name
+  const [history, setHistory] = useState<ChatHistoryEntry[]>([]) // 维护对话历史
+  const messagesContainerRef = useRef<null | HTMLDivElement>(null) // 新增：用于消息列表的容器滚动
+
   console.log('cid', cid)
 
-  useEffect(() => {
+  const initializeChat = useCallback(() => {
     const welcomeMessage: Message = {
       sender: 'bot',
       content: `你好👋！我是人工智能助手 ${name}，可以帮助你解答问题。`
     }
-
     setMessages([welcomeMessage])
-    setHistory([
-      // 初始对话历史
-      ['bot', welcomeMessage.content]
-    ])
+    setHistory([{ sender: 'bot', content: welcomeMessage.content }])
+  }, [name])
+
+  useEffect(() => {
+    initializeChat()
+  }, [initializeChat])
+
+  const scrollToBottom = useCallback(() => {
+    if (messagesContainerRef.current) {
+      messagesContainerRef.current.scrollTop = messagesContainerRef.current.scrollHeight
+    }
   }, [])
+
+  // 修改消息时调用scrollToBottom以滚动到最新的消息
+  useEffect(() => {
+    scrollToBottom()
+  }, [messages, scrollToBottom])
 
   const handleInputChange = useCallback((e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setInputValue(e.target.value)
   }, [])
 
-  const sendMessage = useCallback(async () => {
-    if (!inputValue.trim()) return
+  const updateChatHistory = (sender: string, message: string) => {
+    return [...history, { sender, content: message }]
+  }
 
-    const newMessage: Message = {
-      sender: 'user',
-      content: inputValue
+  const sendMessage = useCallback(async () => {
+    if (!inputValue.trim()) {
+      return
     }
 
+    const newMessage: Message = { sender: 'user', content: inputValue }
     setMessages(prevMessages => [...prevMessages, newMessage])
     setInputValue('')
     setLoading(true)
 
-    // 更新history数组
-    const updatedHistory = [...history, ['user', inputValue]]
-
     try {
-      const res = await getAnswer({
-        cid: cid,
-        question: inputValue,
-        history: updatedHistory // 发送当前对话历史
-      })
+      const updatedHistory = updateChatHistory('user', inputValue)
+      const res = await getAnswer({ cid, question: inputValue, history: updatedHistory })
 
       const botReply: Message = {
         sender: 'bot',
         content: res?.data?.answer || '抱歉，我无法处理你的请求。'
       }
       setMessages(prevMessages => [...prevMessages, botReply])
-
-      // 更新history数组以包含bot的回复
-      setHistory(prevHistory => [...prevHistory, ['bot', botReply.content]])
+      setHistory(prevHistory => updateChatHistory('bot', botReply.content))
     } catch (error) {
       console.error('Error sending message:', error)
       notification.error({
@@ -77,29 +87,31 @@ const Chat: FC = () => {
     } finally {
       setLoading(false)
     }
-  }, [inputValue, history])
+  }, [inputValue, history, cid, updateChatHistory])
 
   return (
     <div className="chat-container">
-      <List
-        className="message-list"
-        itemLayout="horizontal"
-        dataSource={messages}
-        renderItem={item => (
-          <List.Item>
-            <List.Item.Meta
-              avatar={
-                <Avatar
-                  className={'avatar'}
-                  icon={item.sender === 'user' ? <UserOutlined /> : <RobotOutlined />}
-                />
-              }
-              title={item.sender === 'user' ? '你' : 'ChatBot'}
-              description={item.content}
-            />
-          </List.Item>
-        )}
-      />
+      <div className="message-list-container" ref={messagesContainerRef}>
+        <List
+          className="message-list"
+          itemLayout="horizontal"
+          dataSource={messages}
+          renderItem={item => (
+            <List.Item>
+              <List.Item.Meta
+                avatar={
+                  <Avatar
+                    className={'avatar'}
+                    icon={item.sender === 'user' ? <UserOutlined /> : <RobotOutlined />}
+                  />
+                }
+                title={item.sender === 'user' ? '你' : 'ChatBot'}
+                description={item.content}
+              />
+            </List.Item>
+          )}
+        />
+      </div>
       <div className="message-input">
         <TextArea
           rows={3}

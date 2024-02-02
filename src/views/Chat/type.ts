@@ -6,3 +6,8 @@ export type Message = {
 export interface MessageItemProps {
   item: Message
 }
+
+export interface ChatHistoryEntry {
+  sender: string
+  content: string
+}

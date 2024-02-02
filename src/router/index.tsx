@@ -4,10 +4,10 @@ import NProgressHandler from '@/layout/components/nprogress'
 
 const Layout = React.lazy(() => import('@/layout'))
 // 预加载资源
-const Home = lazy(() => import(/* webpackPrefetch: true */ '@/views/Home/index'))
-const Detail = lazy(() => import(/* webpackPrefetch: true */ '@/views/Detail/routes'))
-const User = lazy(() => import(/* webpackPrefetch: true */ '@/views/User/index'))
-const Chat = lazy(() => import(/* webpackPrefetch: true */ '@/views/Chat/index'))
+const Home = React.lazy(() => import(/* webpackPrefetch: true */ '@/views/Home/index'))
+const Detail = React.lazy(() => import(/* webpackPrefetch: true */ '@/views/Detail/routes'))
+const User = React.lazy(() => import(/* webpackPrefetch: true */ '@/views/User/index'))
+const Chat = React.lazy(() => import(/* webpackPrefetch: true */ '@/views/Chat/index'))
 
 const App: FC = () => {
   return (
@@ -15,10 +15,10 @@ const App: FC = () => {
       <Suspense fallback={<NProgressHandler />}>
         <Routes>
           <Route path="/" element={<Layout />}>
-            <Route index element={<Home />} />
-            <Route path="/user" element={<User />} />
-            <Route path="/chat" element={<Chat />} />
-            <Route path="detail/*" element={<Detail />} />
+            <Route index element={<Chat />} />
+            {/*<Route path="/user" element={<User />} />*/}
+            {/*<Route path="/chat" element={<Chat />} />*/}
+            {/*<Route path="detail/*" element={<Detail />} />*/}
           </Route>
         </Routes>
       </Suspense>

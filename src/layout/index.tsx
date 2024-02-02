@@ -4,6 +4,7 @@ import { Outlet } from 'react-router-dom'
 import LayoutHeader from '@/layout/components/header'
 import '@/assets/layout.less'
 import { Props } from '@/layout/type'
+import HandleURLParams from '@/utils/HandleURLParams'
 
 const { Header, Content } = Layout
 
@@ -18,6 +19,7 @@ const App: FC<Props> = ({ children }) => {
       <LayoutHeader />
       {/*<Sidebar collapsed={collapsed} onCollapse={setCollapsed} />*/}
       <Layout className={`overflow-y-auto`}>
+        <HandleURLParams />
         {/*<Header className="breadcrumbs-header">/!*<BreadCrumbs />*!/</Header>*/}
         <Content className="app-content relative" style={{ background: colorBgContainer }}>
           <Outlet />

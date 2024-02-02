@@ -2,8 +2,10 @@ import React, { FC, useState, useEffect, useCallback } from 'react'
 import './chat.less'
 import { Button, Input, List, Avatar, notification } from 'antd'
 import { SendOutlined, UserOutlined, RobotOutlined } from '@ant-design/icons'
+import { useSelector } from 'react-redux'
 import { getAnswer } from '@/api'
 import { Message } from '@/views/Chat/type'
+import { RootState } from '@/store/rootReducer'
 
 const { TextArea } = Input
 
@@ -11,6 +13,10 @@ const Chat: FC = () => {
   const [messages, setMessages] = useState<Array<Message>>([])
   const [inputValue, setInputValue] = useState('')
   const [loading, setLoading] = useState(false)
+  const cid = useSelector((state: RootState) => state.cid.value) // 确保state路径和变量名正确
+
+  // 使用cid
+  console.log('cid', cid)
 
   useEffect(() => {
     const welcomeMessage: Message = {
@@ -38,7 +44,7 @@ const Chat: FC = () => {
 
     try {
       const res = await getAnswer({
-        cid: 'QmXQSbMk72Frm5fToarHQTDmP3mh7JusYkJmBtK1mm6sSj',
+        cid: cid,
         question: inputValue
         // 根据需要添加更多历史记录等
       })

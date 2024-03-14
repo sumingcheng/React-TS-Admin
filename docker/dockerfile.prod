@@ -1,17 +1,17 @@
 # 构建阶段 第一阶段
 FROM node:16.20.2 AS builder
 
+# 环境变量
+EVN WORKDIR= /React-TS-Admin
+
 # 设置工作目录
-WORKDIR /apps/
+WORKDIR $WORKDIR
 
-# 复制 package.json 和 package-lock.json
-COPY package*.json ./
+# 设置淘宝源
+RUN npm config set registry https://registry.npm.taobao.org
 
-# 安装项目依赖
+# 安装全局依赖
 RUN npm install
-
-# 复制项目文件
-COPY . .
 
 # 构建应用，假设构建命令输出的文件位于 dist/ 目录下
 RUN npm run build:prod
@@ -20,16 +20,14 @@ RUN npm run build:prod
 FROM nginx:stable-alpine
 
 # 设置工作目录
-WORKDIR /usr/share/nginx/html
+RUN mkdir $WORKDIR
 
-# 从 1 构建阶段复制构建好的文件到 Nginx 目录
-COPY --from=builder /data/apps/dist/resource .
+# 从构建阶段复制构建好的文件到 Nginx 目录
+COPY --from=builder /data/apps/React-TS-Admin/resource  /React-TS-Admin
 
-# 可选：如果有自定义的 Nginx 配置文件，也可以复制进来
-# COPY nginx.conf /etc/nginx/nginx.conf
+# 复制 Nginx 配置文件
+COPY ./docker/nginx.prod.conf /etc/nginx/nginx.conf
 
 # 暴露端口
 EXPOSE 80
 
-# 使用 Nginx 的默认启动命令
-CMD ["nginx", "-g", "daemon off;"]

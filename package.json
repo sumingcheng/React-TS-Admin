@@ -20,6 +20,7 @@
   "author": "sumingcheng",
   "license": "ISC",
   "dependencies": {
+    "@ant-design/icons": "^5.3.7",
     "@reduxjs/toolkit": "^1.9.5",
     "@types/nprogress": "^0.2.0",
     "antd": "^5.7.3",
